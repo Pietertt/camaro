@@ -1,0 +1,28 @@
+version: "3.3"
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:80"
+    volumes:
+      - ./backend:/var/www/html
+    container_name: laravel
+    networks: 
+        - default
+
+  database:
+    image: mysql:8.0.21
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_DATABASE='camaro'
+      - MYSQL_ROOT_PASSWORD='root'
+    volumes:
+      - /database:/var/lib/mysql
+    container_name: database
+    networks: 
+        - default
+
+networks: 
+    default:
