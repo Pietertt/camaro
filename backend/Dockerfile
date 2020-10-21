@@ -1,7 +1,5 @@
 FROM php:7.4-apache
 
-WORKDIR /var/www/html
-
 RUN apt-get update -y
 RUN apt-get upgrade -y
 
@@ -23,7 +21,14 @@ RUN docker-php-ext-install pdo
 RUN docker-php-ext-install tokenizer
 RUN docker-php-ext-install xml
 
+# No idea what this does
+ENV APACHE_DOCUMENT_ROOT /var/www/backend/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+RUN a2enmod rewrite
+
 # Get composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-COPY . .
+COPY . /var/www/
