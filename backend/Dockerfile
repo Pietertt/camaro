@@ -12,6 +12,9 @@ RUN apt-get install -y unzip
 RUN apt-get install -y git
 RUN apt-get install -y nano 
 
+RUN apt-get install -y nodejs
+RUN apt-get install -y npm
+
 RUN docker-php-ext-install bcmath
 RUN docker-php-ext-install ctype
 RUN docker-php-ext-install fileinfo
