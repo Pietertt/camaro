@@ -1,6 +1,8 @@
-version: "3.3"
+
+version: '3.2'
 
 services:
+
   laravel:
     build: ./backend
     ports:
@@ -9,23 +11,29 @@ services:
       - ./backend:/var/www/:cached 
     container_name: laravel1
     networks: 
-        - default
+      - default
 
-  database:
-    image: mysql:8.0.21
+  db:
+    image: mysql:8.0
+    container_name: appsDB
+    restart: always
     ports:
-      - "3307:3306"
+      - '6603:3306'
     environment:
-      - MYSQL_DATABASE='camaro'
-      - MYSQL_ROOT_PASSWORD='root'
-    volumes:
-      - myapp:/var/lib/mysql
-    container_name: database1
-    networks: 
-        - default
+      MYSQL_ROOT_PASSWORD: helloworld
 
-networks: 
-    default:
-
-volumes:
-  myapp:
+  app:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - '8080:80'
+    environment:
+      PMA_HOST: db
+  
+  flask:
+    build: .
+    ports:
+      - "5000:5000"
