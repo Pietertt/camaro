@@ -9,31 +9,46 @@ services:
       - "8000:80"
     volumes:
       - ./backend:/var/www/:cached 
-    container_name: laravel1
+    container_name: laravel
+    networks:
+      - default
+
+  mysql:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: camaro
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: root
+    volumes: 
+      - database_volume:/var/lib/mysql
     networks: 
       - default
 
-  db:
-    image: mysql:8.0
-    container_name: appsDB
-    restart: always
-    ports:
-      - '6603:3306'
-    environment:
-      MYSQL_ROOT_PASSWORD: helloworld
-
-  app:
+  phpmyadmin:
     depends_on:
-      - db
+      - mysql
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
     restart: always
     ports:
       - '8080:80'
+    links:
+      - mysql:mysql
     environment:
-      PMA_HOST: db
+      PMA_HOST: mysql
+    networks: 
+      - default
   
-  flask:
-    build: .
+  api:
+    build: ./api
     ports:
       - "5000:5000"
+
+networks: 
+  default:
+
+volumes: 
+    database_volume:
