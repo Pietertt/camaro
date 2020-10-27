@@ -1953,6 +1953,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -75670,21 +75671,35 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("ul", { staticClass: "uk-list" }, [
             _c("li", [
-              _c("a", { staticClass: "uk-link-muted", attrs: { href: "#" } }, [
-                _vm._v("Profiel")
-              ])
+              _c("span", {
+                staticClass: "uk-margin-small-right uk-icon",
+                attrs: { "uk-icon": "home" }
+              }),
+              _vm._v("Startpagina")
             ]),
             _vm._v(" "),
             _c("li", [
-              _c("a", { staticClass: "uk-link-muted", attrs: { href: "#" } }, [
-                _vm._v("Activiteiten")
-              ])
+              _c("span", {
+                staticClass: "uk-margin-small-right uk-icon",
+                attrs: { "uk-icon": "user" }
+              }),
+              _vm._v("Profiel")
             ]),
             _vm._v(" "),
             _c("li", [
-              _c("a", { staticClass: "uk-link-muted", attrs: { href: "#" } }, [
-                _vm._v("Uitloggen")
-              ])
+              _c("span", {
+                staticClass: "uk-margin-small-right uk-icon",
+                attrs: { "uk-icon": "grid" }
+              }),
+              _vm._v("Activiteiten")
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("span", {
+                staticClass: "uk-margin-small-right uk-icon",
+                attrs: { "uk-icon": "sign-in" }
+              }),
+              _vm._v("Uitloggen")
             ])
           ])
         ])
@@ -88090,8 +88105,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/backend/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/backend/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/pieterboersma/Desktop/camaro/backend/backend/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/pieterboersma/Desktop/camaro/backend/backend/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -13,9 +13,10 @@
                         <div class="uk-card-body">
                             <h3 class="uk-card-title">Welkom, Pieter Boersma</h3>
                             <ul class="uk-list">
-                                <li><a class="uk-link-muted" href="#">Profiel</a></li>
-                                <li><a class="uk-link-muted" href="#">Activiteiten</a></li>
-                                <li><a class="uk-link-muted" href="#">Uitloggen</a></li>
+                                <li><span class="uk-margin-small-right uk-icon" uk-icon="home"></span>Startpagina</li>
+                                <li><span class="uk-margin-small-right uk-icon" uk-icon="user"></span>Profiel</li>
+                                <li><span class="uk-margin-small-right uk-icon" uk-icon="grid"></span>Activiteiten</li>
+                                <li><span class="uk-margin-small-right uk-icon" uk-icon="sign-in"></span>Uitloggen</li>
                             </ul>
                         </div>
                     </div>
