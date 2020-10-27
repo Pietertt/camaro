@@ -1899,6 +1899,31 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BarChart.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/BarChart.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/es/index.js");
+
+var reactiveProp = vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["mixins"].reactiveProp;
+/* harmony default export */ __webpack_exports__["default"] = ({
+  "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["Bar"],
+  mixins: [reactiveProp],
+  props: ['options'],
+  mounted: function mounted() {
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -1909,6 +1934,49 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LineChart_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LineChart.vue */ "./resources/js/components/LineChart.vue");
+/* harmony import */ var _PieChart_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PieChart.vue */ "./resources/js/components/PieChart.vue");
+/* harmony import */ var _BarChart_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BarChart.vue */ "./resources/js/components/BarChart.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1955,13 +2023,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    LineChart: _LineChart_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    LineChart: _LineChart_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    PieChart: _PieChart_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    BarChart: _BarChart_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
-      datacollection: null
+      totalData: null,
+      activityData: null,
+      monthlyData: null,
+      recentData: null
     };
   },
   mounted: function mounted() {
@@ -1969,14 +2044,39 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     fillData: function fillData() {
-      this.datacollection = {
-        labels: [Math.floor(Math.random() * (50 - 5 + 1)) + 5, Math.floor(Math.random() * (50 - 5 + 1)) + 5],
+      this.totalData = {
+        labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
         datasets: [{
           label: 'Activiteiten',
-          backgroundColor: '#f87979',
-          data: [Math.floor(Math.random() * (50 - 5 + 1)) + 5, Math.floor(Math.random() * (50 - 5 + 1)) + 5]
+          borderColor: '#cc65fe',
+          pointBackgroundColor: 'white',
+          borderWidth: 2,
+          pointBorderColor: '#cc65fe',
+          backgroundColor: 'transparent',
+          data: [2, 3, 6, 2, 6, 3, 4, 9, 3, 2, 5, 1, 7, 4, 12, 23, 27, 12, 23, 10, 12, 9, 10, 12, 13, 20, 24, 28, 20, 15, 23]
         }]
-      };
+      }, this.activityData = {
+        labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
+        datasets: [{
+          data: [40, 60],
+          backgroundColor: ['#ff6384', '#36a2eb']
+        }]
+      }, this.recentData = [{
+        timestamp: 202010271154,
+        valid: true
+      }, {
+        timestamp: 202010271343,
+        valid: true
+      }, {
+        timestamp: 202010271412,
+        valid: false
+      }, {
+        timestamp: 202010271534,
+        valid: false
+      }, {
+        timestamp: 202010271719,
+        valid: false
+      }];
     }
   }
 });
@@ -1997,6 +2097,31 @@ __webpack_require__.r(__webpack_exports__);
 var reactiveProp = vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["mixins"].reactiveProp;
 /* harmony default export */ __webpack_exports__["default"] = ({
   "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["Line"],
+  mixins: [reactiveProp],
+  props: ['options'],
+  mounted: function mounted() {
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PieChart.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PieChart.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/es/index.js");
+
+var reactiveProp = vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["mixins"].reactiveProp;
+/* harmony default export */ __webpack_exports__["default"] = ({
+  "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["Pie"],
   mixins: [reactiveProp],
   props: ['options'],
   mounted: function mounted() {
@@ -75638,21 +75763,88 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "uk-section uk-section-muted" }, [
     _c("div", { staticClass: "uk-container" }, [
-      _c("h3", [_vm._v("Section")]),
+      _c("h3", [_vm._v("Welkom, Pieter Boersma")]),
       _vm._v(" "),
-      _c("div", { attrs: { "uk-grid": "" } }, [
+      _c("div", { staticClass: "uk-grid-match", attrs: { "uk-grid": "" } }, [
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "uk-width-1-2" }, [
           _c(
             "div",
             { staticClass: "uk-card uk-card-default uk-card-body" },
-            [_c("line-chart", { attrs: { "chart-data": _vm.datacollection } })],
+            [
+              _c("h3", { staticClass: "uk-card-title" }, [
+                _vm._v("Deze maand")
+              ]),
+              _vm._v(" "),
+              _c("line-chart", { attrs: { "chart-data": _vm.totalData } })
+            ],
             1
           )
         ]),
         _vm._v(" "),
-        _vm._m(1)
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-width-1-2" }, [
+          _c(
+            "div",
+            { staticClass: "uk-card uk-card-default uk-card-body" },
+            [
+              _c("h3", { staticClass: "uk-card-title" }, [
+                _vm._v("Statistieken")
+              ]),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _c("pie-chart", { attrs: { "chart-data": _vm.activityData } })
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-width-1-2" }, [
+          _c("div", { staticClass: "uk-card uk-card-primary" }, [
+            _c("div", { staticClass: "uk-card-body" }, [
+              _c("h3", { staticClass: "uk-card-title" }, [
+                _vm._v("Statistieken")
+              ]),
+              _vm._v(" "),
+              _c(
+                "table",
+                {
+                  staticClass:
+                    "uk-table uk-table-hover uk-table-divider uk-table-large"
+                },
+                [
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.recentData, function(d) {
+                      return _c("tr", { key: d.timestamp }, [
+                        _c("td", [_vm._v(_vm._s(d.timestamp))]),
+                        _vm._v(" "),
+                        d.valid
+                          ? _c("td", [_vm._v("Valide")])
+                          : _c("td", [_vm._v("Invalide")])
+                      ])
+                    }),
+                    0
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "uk-button uk-button-default",
+                  attrs: { href: "#" }
+                },
+                [_vm._v("Alle activiteiten")]
+              )
+            ])
+          ])
+        ])
       ])
     ])
   ])
@@ -75663,44 +75855,18 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "uk-width-1-4" }, [
-      _c("div", { staticClass: "uk-card uk-card-primary" }, [
+      _c("div", { staticClass: "uk-card uk-card-default" }, [
         _c("div", { staticClass: "uk-card-body" }, [
-          _c("h3", { staticClass: "uk-card-title" }, [
-            _vm._v("Welkom, Pieter Boersma")
-          ]),
+          _c("h3", { staticClass: "uk-card-title" }, [_vm._v("Menu")]),
           _vm._v(" "),
           _c("ul", { staticClass: "uk-list" }, [
-            _c("li", [
-              _c("span", {
-                staticClass: "uk-margin-small-right uk-icon",
-                attrs: { "uk-icon": "home" }
-              }),
-              _vm._v("Startpagina")
-            ]),
+            _c("li", [_vm._v("Startpagina")]),
             _vm._v(" "),
-            _c("li", [
-              _c("span", {
-                staticClass: "uk-margin-small-right uk-icon",
-                attrs: { "uk-icon": "user" }
-              }),
-              _vm._v("Profiel")
-            ]),
+            _c("li", [_vm._v("Profiel")]),
             _vm._v(" "),
-            _c("li", [
-              _c("span", {
-                staticClass: "uk-margin-small-right uk-icon",
-                attrs: { "uk-icon": "grid" }
-              }),
-              _vm._v("Activiteiten")
-            ]),
+            _c("li", [_vm._v("Activiteiten")]),
             _vm._v(" "),
-            _c("li", [
-              _c("span", {
-                staticClass: "uk-margin-small-right uk-icon",
-                attrs: { "uk-icon": "sign-in" }
-              }),
-              _vm._v("Uitloggen")
-            ])
+            _c("li", [_vm._v("Uitloggen")])
           ])
         ])
       ])
@@ -75711,8 +75877,34 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "uk-width-1-4" }, [
-      _c("div", { staticClass: "uk-card uk-card-primary uk-card-body" }, [
-        _vm._v("Item")
+      _c("div", { staticClass: "uk-card uk-card-default" }, [
+        _c("div", { staticClass: "uk-card-body" }, [
+          _c("h3", { staticClass: "uk-card-title" }, [_vm._v("Overzicht")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { attrs: { "uk-tab": "" } }, [
+      _c("li", { staticClass: "uk-active" }, [
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Validiteit")])
+      ]),
+      _vm._v(" "),
+      _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Per maand")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Datum")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Validiteit")])
       ])
     ])
   }
@@ -87968,6 +88160,56 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/components/BarChart.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/BarChart.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _BarChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BarChart.vue?vue&type=script&lang=js& */ "./resources/js/components/BarChart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  _BarChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/BarChart.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/BarChart.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/BarChart.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BarChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./BarChart.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BarChart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BarChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/ExampleComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/ExampleComponent.vue ***!
@@ -88087,6 +88329,56 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/PieChart.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/PieChart.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PieChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PieChart.vue?vue&type=script&lang=js& */ "./resources/js/components/PieChart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  _PieChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PieChart.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PieChart.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/PieChart.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PieChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PieChart.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PieChart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PieChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -88105,8 +88397,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/pieterboersma/Desktop/camaro/backend/backend/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/pieterboersma/Desktop/camaro/backend/backend/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/backend/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/backend/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
