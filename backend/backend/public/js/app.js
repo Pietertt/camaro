@@ -1940,6 +1940,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -1956,37 +1969,16 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     fillData: function fillData() {
       this.datacollection = {
-        labels: [this.getRandomInt(), this.getRandomInt()],
+        labels: [Math.floor(Math.random() * (50 - 5 + 1)) + 5, Math.floor(Math.random() * (50 - 5 + 1)) + 5],
         datasets: [{
           label: 'Activiteiten',
           backgroundColor: '#f87979',
-          data: [this.getRandomInt(), this.getRandomInt()]
+          data: [Math.floor(Math.random() * (50 - 5 + 1)) + 5, Math.floor(Math.random() * (50 - 5 + 1)) + 5]
         }]
       };
-    },
-    getRandomInt: function getRandomInt() {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5;
     }
   }
-}); //   <div class="uk-child-width-1-2 uk-text-center" uk-grid>
-//         <div>
-//             <div class="uk-card uk-card-default uk-card-body">
-//                 <div class="small">
-//                     <line-chart :chart-data="datacollection"></line-chart>
-//                 </div>
-//             </div>
-//         </div>
-//         <div>
-//             <div class="uk-child-width-1-2" uk-grid>
-//                 <div>
-//                   Hi
-//                 </div>
-//                 <div>
-//                     Hi
-//                 </div>
-//             </div>
-//         </div>
-//     </div>
+});
 
 /***/ }),
 
@@ -75643,66 +75635,69 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "uk-section uk-section-muted uk-preserve-color" },
-    [
-      _c("div", { staticClass: "uk-container" }, [
-        _c(
-          "div",
-          {
-            staticClass: "uk-grid-match uk-child-width-expand@m",
-            attrs: { "uk-grid": "" }
-          },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", [
-              _c(
-                "div",
-                { staticClass: "uk-card uk-card-default uk-card-body" },
-                [
-                  _c("line-chart", {
-                    attrs: { "chart-data": _vm.datacollection }
-                  })
-                ],
-                1
-              )
-            ])
-          ]
-        )
+  return _c("div", { staticClass: "uk-section uk-section-muted" }, [
+    _c("div", { staticClass: "uk-container" }, [
+      _c("h3", [_vm._v("Section")]),
+      _vm._v(" "),
+      _c("div", { attrs: { "uk-grid": "" } }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "uk-width-1-2" }, [
+          _c(
+            "div",
+            { staticClass: "uk-card uk-card-default uk-card-body" },
+            [_c("line-chart", { attrs: { "chart-data": _vm.datacollection } })],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
       ])
-    ]
-  )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "uk-card uk-card-primary uk-card-body" }, [
-        _c("h3", { staticClass: "uk-card-title" }, [_vm._v("Default")]),
-        _vm._v(" "),
-        _c("ul", { staticClass: "uk-list" }, [
-          _c("li", [
-            _c("a", { staticClass: "uk-link-muted", attrs: { href: "#" } }, [
-              _vm._v("Profiel")
-            ])
+    return _c("div", { staticClass: "uk-width-1-4" }, [
+      _c("div", { staticClass: "uk-card uk-card-primary" }, [
+        _c("div", { staticClass: "uk-card-body" }, [
+          _c("h3", { staticClass: "uk-card-title" }, [
+            _vm._v("Welkom, Pieter Boersma")
           ]),
           _vm._v(" "),
-          _c("li", [
-            _c("a", { staticClass: "uk-link-muted", attrs: { href: "#" } }, [
-              _vm._v("Activiteit")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { staticClass: "uk-link-muted", attrs: { href: "#" } }, [
-              _vm._v("Uitloggen")
+          _c("ul", { staticClass: "uk-list" }, [
+            _c("li", [
+              _c("a", { staticClass: "uk-link-muted", attrs: { href: "#" } }, [
+                _vm._v("Profiel")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { staticClass: "uk-link-muted", attrs: { href: "#" } }, [
+                _vm._v("Activiteiten")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { staticClass: "uk-link-muted", attrs: { href: "#" } }, [
+                _vm._v("Uitloggen")
+              ])
             ])
           ])
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "uk-width-1-4" }, [
+      _c("div", { staticClass: "uk-card uk-card-primary uk-card-body" }, [
+        _vm._v("Item")
       ])
     ])
   }
@@ -88095,8 +88090,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/pieterboersma/Desktop/camaro/backend/backend/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/pieterboersma/Desktop/camaro/backend/backend/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/backend/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/backend/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
