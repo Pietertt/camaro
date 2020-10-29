@@ -2022,6 +2022,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2040,8 +2042,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.fillData(), axios.get('http://localhost:5000').then(function (response) {
-      return alert(response);
+    var _this = this;
+
+    this.fillData(), axios.get('http://localhost:5000/').then(function (response) {
+      return _this.recentData = response.data;
     });
   },
   methods: {
@@ -2063,22 +2067,7 @@ __webpack_require__.r(__webpack_exports__);
           data: [40, 60],
           backgroundColor: ['#ff6384', '#36a2eb']
         }]
-      }, this.recentData = [{
-        timestamp: 202010271154,
-        valid: true
-      }, {
-        timestamp: 202010271343,
-        valid: true
-      }, {
-        timestamp: 202010271412,
-        valid: false
-      }, {
-        timestamp: 202010271534,
-        valid: false
-      }, {
-        timestamp: 202010271719,
-        valid: false
-      }];
+      };
     }
   }
 });
@@ -75824,11 +75813,11 @@ var render = function() {
                     "tbody",
                     _vm._l(_vm.recentData, function(d) {
                       return _c("tr", { key: d.timestamp }, [
-                        _c("td", [_vm._v(_vm._s(d.timestamp))]),
+                        _c("td", [_vm._v(_vm._s(d[0]))]),
                         _vm._v(" "),
-                        d.valid
-                          ? _c("td", [_vm._v("Valide")])
-                          : _c("td", [_vm._v("Invalide")])
+                        _c("td", [_vm._v(_vm._s(d[1]))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(d[2]))])
                       ])
                     }),
                     0
@@ -75904,6 +75893,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
+        _c("th", [_vm._v("Nummer")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Datum")]),
         _vm._v(" "),
         _c("th", [_vm._v("Validiteit")])

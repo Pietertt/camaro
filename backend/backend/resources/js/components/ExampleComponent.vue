@@ -57,14 +57,16 @@
                             <table class="uk-table uk-table-hover uk-table-divider uk-table-large">
                                 <thead>
                                     <tr>
+                                        <th>Nummer</th>
                                         <th>Datum</th>
                                         <th>Validiteit</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr v-for="d in recentData" :key="d.timestamp">
-                                        <td>{{ d.timestamp }}</td>
-                                        <td v-if="d.valid">Valide</td><td v-else="d.valid">Invalide</td>
+                                        <td>{{ d[0] }}</td>
+                                        <td>{{ d[1] }}</td>
+                                        <td>{{ d[2] }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -108,7 +110,8 @@
    
         mounted () {
             this.fillData(),
-            axios.get('http://localhost:5000').then(response => (alert(response)));
+            axios.get('http://localhost:5000/').then(response => (
+                this.recentData = response.data))
         },
     
         methods: {
@@ -133,30 +136,7 @@
                         backgroundColor: ['#ff6384', '#36a2eb']
 
                     }]
-                },
-
-                this.recentData = [
-                    {
-                        timestamp: 202010271154,
-                        valid: true
-                    },
-                    {
-                        timestamp: 202010271343,
-                        valid: true
-                    },
-                    {
-                        timestamp: 202010271412,
-                        valid: false
-                    },
-                    {
-                        timestamp: 202010271534,
-                        valid: false
-                    },
-                    {
-                        timestamp: 202010271719,
-                        valid: false
-                    }
-                ]
+                }
             }
         }
     }

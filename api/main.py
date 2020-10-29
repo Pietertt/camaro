@@ -2,8 +2,6 @@ import mysql.connector
 import json
 import datetime
 
-from flask import Flask
-
 database = mysql.connector.connect(
   host="mysql",
   user="root",
@@ -14,11 +12,20 @@ database = mysql.connector.connect(
 
 cursor = database.cursor()
 
+from flask import Flask
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)
 
-@app.route('/')
-def hello():
+@app.route("/")
+def helloWorld():
     cursor.execute("SELECT * FROM `activities`")
-    myresult = cursor.fetchall()
+    result = cursor.fetchall()
 
-    return json.dumps(myresult)
+    results = []
+
+    for x in result:
+        results.append(x)
+
+    return json.dumps(results)
