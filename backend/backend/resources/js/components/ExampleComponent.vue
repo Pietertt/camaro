@@ -107,7 +107,8 @@
         },
    
         mounted () {
-            this.fillData()
+            this.fillData(),
+            axios.get('http://localhost:5000').then(response => (alert(response)));
         },
     
         methods: {

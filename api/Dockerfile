@@ -2,8 +2,10 @@ FROM python:3.8-alpine
 
 WORKDIR /api
 
-ENV FLASK_APP=app.py
+ENV FLASK_APP=main.py
 ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_ENV=development
+ENV FLASK_DEBUG=1
 
 RUN apk add --no-cache gcc musl-dev linux-headers
 

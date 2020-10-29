@@ -2040,7 +2040,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.fillData();
+    this.fillData(), axios.get('http://localhost:5000').then(function (response) {
+      return alert(response);
+    });
   },
   methods: {
     fillData: function fillData() {
@@ -88397,8 +88399,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/backend/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/backend/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/pieterboersma/Desktop/camaro/backend/backend/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/pieterboersma/Desktop/camaro/backend/backend/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
