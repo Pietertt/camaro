@@ -110,10 +110,6 @@
         },
    
         async mounted () {
-            //this.fillData();
-            //this.fillData(),
-            // axios.get('http://localhost:5000/activities/recent').then(response => (
-            //     this.recentData = response.data)),
 
             axios.get('http://localhost:5000/activities/monthly').then(response => {
                     this.totalData = {
@@ -129,10 +125,6 @@
                         }]
                     }
             });
-            // for(var i = 0; i < data.length; i++){
-            //     // this.totalData.datasets[0].data[0] = 1;
-            //     // this.totalData.datasets[0].data[1] = 1;
-            // }
 
         },
     
