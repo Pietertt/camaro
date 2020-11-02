@@ -2,6 +2,8 @@ import mysql.connector
 import json
 import datetime
 
+from models.Activity import Activity
+
 database = mysql.connector.connect(
   host="mysql",
   user="root",
@@ -32,12 +34,19 @@ def helloWorld():
 
 @app.route("/activities/monthly")
 def get_activities_monthly():
-    cursor.execute("SELECT COUNT(SUBSTRING(activities.timestamp, 7, 2)) FROM activities GROUP BY SUBSTRING(activities.timestamp, 7, 2) ORDER BY COUNT(SUBSTRING(activities.timestamp, 7, 2)) DESC")
+    cursor.execute("SELECT DATE(activities.timestamp), COUNT(activities.timestamp) AS TOT FROM activities GROUP BY DATE(activities.timestamp)")
     result = cursor.fetchall()
 
     results = []
 
     for x in result:
-        results.append(x[0])
+        activity = Activity(1)
+        activity.set_day(str(x[0])[8:10])
+
+        subarray = []
+        subarray.append(x[1])
+        subarray.append(str(activity.get_day()))
+
+        results.append(subarray)
 
     return json.dumps(results)

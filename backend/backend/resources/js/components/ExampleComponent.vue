@@ -117,7 +117,7 @@
 
             axios.get('http://localhost:5000/activities/monthly').then(response => {
                     this.totalData = {
-                        labels: [1, 2, 3, 4],
+                        labels: response.data.map(x => x[1]),
                         datasets: [{
                             label: 'Activiteiten',
                             borderColor: '#cc65fe',
@@ -125,7 +125,7 @@
                             borderWidth: 2,
                             pointBorderColor: '#cc65fe',
                             backgroundColor: 'transparent',
-                            data: [response.data[0], response.data[1], response.data[2], response.data[3]]
+                            data: response.data.map(x => x[0])
                         }]
                     }
             });

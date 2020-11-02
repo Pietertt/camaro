@@ -2076,7 +2076,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               //     this.recentData = response.data)),
               axios.get('http://localhost:5000/activities/monthly').then(function (response) {
                 _this.totalData = {
-                  labels: [1, 2, 3, 4],
+                  labels: response.data.map(function (x) {
+                    return x[1];
+                  }),
                   datasets: [{
                     label: 'Activiteiten',
                     borderColor: '#cc65fe',
@@ -2084,7 +2086,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     borderWidth: 2,
                     pointBorderColor: '#cc65fe',
                     backgroundColor: 'transparent',
-                    data: [response.data[0], response.data[1], response.data[2], response.data[3]]
+                    data: response.data.map(function (x) {
+                      return x[0];
+                    })
                   }]
                 };
               }); // for(var i = 0; i < data.length; i++){
