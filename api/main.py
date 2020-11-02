@@ -18,14 +18,26 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/")
+@app.route("/activities/recent")
 def helloWorld():
-    cursor.execute("SELECT * FROM `activities`")
+    cursor.execute("SELECT * FROM `activities` LIMIT 5")
     result = cursor.fetchall()
 
     results = []
 
     for x in result:
         results.append(x)
+
+    return json.dumps(results)
+
+@app.route("/activities/monthly")
+def get_activities_monthly():
+    cursor.execute("SELECT COUNT(SUBSTRING(activities.timestamp, 7, 2)) FROM activities GROUP BY SUBSTRING(activities.timestamp, 7, 2) ORDER BY COUNT(SUBSTRING(activities.timestamp, 7, 2)) DESC")
+    result = cursor.fetchall()
+
+    results = []
+
+    for x in result:
+        results.append(x[0])
 
     return json.dumps(results)

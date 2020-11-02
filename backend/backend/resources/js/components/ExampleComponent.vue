@@ -101,6 +101,7 @@
         data () {
             return {
                 totalData: null,
+                test: [],
                 activityData: null,
                 monthlyData: null,
                 recentData: null,
@@ -108,27 +109,35 @@
             }
         },
    
-        mounted () {
-            this.fillData(),
-            axios.get('http://localhost:5000/').then(response => (
-                this.recentData = response.data))
+        async mounted () {
+            //this.fillData();
+            //this.fillData(),
+            // axios.get('http://localhost:5000/activities/recent').then(response => (
+            //     this.recentData = response.data)),
+
+            axios.get('http://localhost:5000/activities/monthly').then(response => {
+                    this.totalData = {
+                        labels: [1, 2, 3, 4],
+                        datasets: [{
+                            label: 'Activiteiten',
+                            borderColor: '#cc65fe',
+                            pointBackgroundColor: 'white',
+                            borderWidth: 2,
+                            pointBorderColor: '#cc65fe',
+                            backgroundColor: 'transparent',
+                            data: [response.data[0], response.data[1], response.data[2], response.data[3]]
+                        }]
+                    }
+            });
+            // for(var i = 0; i < data.length; i++){
+            //     // this.totalData.datasets[0].data[0] = 1;
+            //     // this.totalData.datasets[0].data[1] = 1;
+            // }
+
         },
     
         methods: {
             fillData () {
-                this.totalData = {
-                    labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
-                    datasets: [{
-                        label: 'Activiteiten',
-                        borderColor: '#cc65fe',
-                        pointBackgroundColor: 'white',
-                        borderWidth: 2,
-                        pointBorderColor: '#cc65fe',
-                        backgroundColor: 'transparent',
-                        data: [2, 3, 6, 2, 6, 3, 4, 9, 3, 2, 5, 1, 7, 4, 12, 23, 27, 12, 23, 10, 12, 9, 10, 12, 13, 20, 24, 28, 20, 15, 23]
-                    }]
-                },
-
                 this.activityData = {
                     labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
                     datasets: [{
