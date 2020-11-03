@@ -32,8 +32,11 @@
                 <div class="uk-width-1-4">
                     <div class="uk-card uk-card-default">
                         <div class="uk-card-body">
-                            <h3 class="uk-card-title">Overzicht</h3>
-                            
+                            <h5 class="uk-heading-line uk-text-center"><span>Acties</span></h5>
+                            <button class="uk-button uk-button-danger uk-width-1-1 uk-margin-small-bottom" @click=deleteActivities><span v-if="!deleteActivitiyLoading">Activiteiten</span><span v-if="deleteActivitiyLoading"><div uk-spinner></div></span></button>
+                            <button class="uk-button uk-button-danger uk-width-1-1 uk-margin-small-bottom" @click=deleteSensorData><span v-if="!deleteSensorLoading">Sensordata</span><span v-if="deleteSensorLoading"><div uk-spinner></div></span></button>
+                             
+                             
                         </div>
                     </div>
                 </div>
@@ -86,7 +89,8 @@
 
 </template>
 
-<script>
+<script lang="ts">
+
     import LineChart from './LineChart.vue'
     import PieChart from './PieChart.vue'
     import BarChart from './BarChart.vue'
@@ -101,42 +105,84 @@
         data () {
             return {
                 totalData: null,
-                activityData: null,
-                monthlyData: null,
-                recentData: null,
-
+                deleteSensorLoading: false,
+                deleteActivitiyLoading: false
             }
         },
    
-        mounted () {
-            this.fillData(),
-            axios.get('http://localhost:5000/').then(response => (
-                this.recentData = response.data))
+        async mounted () {
+
+            try {
+                axios.get('http://imac-van-pieter.local:5000/activities/monthly').then(response => {
+                        this.totalData = {
+                            labels: response.data.map(x => x[1]),
+                            datasets: [{
+                                label: 'Activiteiten',
+                                borderColor: '#cc65fe',
+                                pointBackgroundColor: 'white',
+                                borderWidth: 2,
+                                pointBorderColor: '#cc65fe',
+                                backgroundColor: 'transparent',
+                                data: response.data.map(x => x[0])
+                            }]
+                        }
+                });
+            } catch(error){
+
+            }
+
+            // try {
+            //     axios.get('http://imac-van-pieter.local:5000/activities/recent').then(response => {
+            //         this.recentData = response.data;
+            //     });
+            // } catch(error){
+
+            // }
+
+            // try {
+            //     axios.get('http://imac-van-pieter.local:5000/activities/valid/all').then(response => {
+            //         this.totalValid = response.data;
+            //     });
+            // } catch(error){
+                
+            // }
+
+            // try {
+            //     axios.get('http://imac-van-pieter.local:5000/activities/invalid/all').then(response => {
+            //         this.totalInvalid = response.data;
+
+            //         this.activityData = {
+            //             labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
+            //             datasets: [{
+            //                 data: [this.totalValid, this.totalInvalid],
+            //                 backgroundColor: ['#ff6384', '#36a2eb']
+
+            //             }]
+            //         }
+            //     });
+            // } catch(error){
+
+            // }
         },
     
         methods: {
-            fillData () {
-                this.totalData = {
-                    labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
-                    datasets: [{
-                        label: 'Activiteiten',
-                        borderColor: '#cc65fe',
-                        pointBackgroundColor: 'white',
-                        borderWidth: 2,
-                        pointBorderColor: '#cc65fe',
-                        backgroundColor: 'transparent',
-                        data: [2, 3, 6, 2, 6, 3, 4, 9, 3, 2, 5, 1, 7, 4, 12, 23, 27, 12, 23, 10, 12, 9, 10, 12, 13, 20, 24, 28, 20, 15, 23]
-                    }]
-                },
+            
+            deleteActivities(){
+                this.deleteActivitiyLoading = true;
+                axios.get('http://imac-van-pieter.local:5000/activities/delete/all').then(response => {
+                    if(response.data == 200){
+                        this.deleteActivitiyLoading = false;
+                    }
+                });
+            },
 
-                this.activityData = {
-                    labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
-                    datasets: [{
-                        data: [40, 60],
-                        backgroundColor: ['#ff6384', '#36a2eb']
-
-                    }]
-                }
+            deleteSensorData(){
+                this.deleteSensorLoading = true;
+                axios.get('http://imac-van-pieter.local:5000/sensor/delete/all').then(response => {
+                    if(response.data == 200){
+                        this.deleteSensorLoading = false;
+                    }
+                });
             }
         }
     }

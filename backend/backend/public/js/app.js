@@ -1924,156 +1924,6 @@ var reactiveProp = vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["mixins"].reactivePr
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _LineChart_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LineChart.vue */ "./resources/js/components/LineChart.vue");
-/* harmony import */ var _PieChart_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PieChart.vue */ "./resources/js/components/PieChart.vue");
-/* harmony import */ var _BarChart_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BarChart.vue */ "./resources/js/components/BarChart.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    LineChart: _LineChart_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    PieChart: _PieChart_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    BarChart: _BarChart_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-  },
-  data: function data() {
-    return {
-      totalData: null,
-      activityData: null,
-      monthlyData: null,
-      recentData: null
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    this.fillData(), axios.get('http://localhost:5000/').then(function (response) {
-      return _this.recentData = response.data;
-    });
-  },
-  methods: {
-    fillData: function fillData() {
-      this.totalData = {
-        labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
-        datasets: [{
-          label: 'Activiteiten',
-          borderColor: '#cc65fe',
-          pointBackgroundColor: 'white',
-          borderWidth: 2,
-          pointBorderColor: '#cc65fe',
-          backgroundColor: 'transparent',
-          data: [2, 3, 6, 2, 6, 3, 4, 9, 3, 2, 5, 1, 7, 4, 12, 23, 27, 12, 23, 10, 12, 9, 10, 12, 13, 20, 24, 28, 20, 15, 23]
-        }]
-      }, this.activityData = {
-        labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
-        datasets: [{
-          data: [40, 60],
-          backgroundColor: ['#ff6384', '#36a2eb']
-        }]
-      };
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LineChart.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LineChart.vue?vue&type=script&lang=js& ***!
@@ -75737,6 +75587,211 @@ var reactiveProp = {
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=ts&":
+/*!*********************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=ts& ***!
+  \*********************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LineChart_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LineChart.vue */ "./resources/js/components/LineChart.vue");
+/* harmony import */ var _PieChart_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PieChart.vue */ "./resources/js/components/PieChart.vue");
+/* harmony import */ var _BarChart_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BarChart.vue */ "./resources/js/components/BarChart.vue");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        LineChart: _LineChart_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+        PieChart: _PieChart_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+        BarChart: _BarChart_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    },
+
+    data () {
+        return {
+            totalData: null,
+            deleteSensorLoading: false,
+            deleteActivitiyLoading: false
+        }
+    },
+
+    async mounted () {
+
+        try {
+            axios.get('http://imac-van-pieter.local:5000/activities/monthly').then(response => {
+                    this.totalData = {
+                        labels: response.data.map(x => x[1]),
+                        datasets: [{
+                            label: 'Activiteiten',
+                            borderColor: '#cc65fe',
+                            pointBackgroundColor: 'white',
+                            borderWidth: 2,
+                            pointBorderColor: '#cc65fe',
+                            backgroundColor: 'transparent',
+                            data: response.data.map(x => x[0])
+                        }]
+                    }
+            });
+        } catch(error){
+
+        }
+
+        // try {
+        //     axios.get('http://imac-van-pieter.local:5000/activities/recent').then(response => {
+        //         this.recentData = response.data;
+        //     });
+        // } catch(error){
+
+        // }
+
+        // try {
+        //     axios.get('http://imac-van-pieter.local:5000/activities/valid/all').then(response => {
+        //         this.totalValid = response.data;
+        //     });
+        // } catch(error){
+            
+        // }
+
+        // try {
+        //     axios.get('http://imac-van-pieter.local:5000/activities/invalid/all').then(response => {
+        //         this.totalInvalid = response.data;
+
+        //         this.activityData = {
+        //             labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
+        //             datasets: [{
+        //                 data: [this.totalValid, this.totalInvalid],
+        //                 backgroundColor: ['#ff6384', '#36a2eb']
+
+        //             }]
+        //         }
+        //     });
+        // } catch(error){
+
+        // }
+    },
+
+    methods: {
+        
+        deleteActivities(){
+            this.deleteActivitiyLoading = true;
+            axios.get('http://imac-van-pieter.local:5000/activities/delete/all').then(response => {
+                if(response.data == 200){
+                    this.deleteActivitiyLoading = false;
+                }
+            });
+        },
+
+        deleteSensorData(){
+            this.deleteSensorLoading = true;
+            axios.get('http://imac-van-pieter.local:5000/sensor/delete/all').then(response => {
+                if(response.data == 200){
+                    this.deleteSensorLoading = false;
+                }
+            });
+        }
+    }
+});
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
@@ -75774,7 +75829,47 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm._m(1),
+        _c("div", { staticClass: "uk-width-1-4" }, [
+          _c("div", { staticClass: "uk-card uk-card-default" }, [
+            _c("div", { staticClass: "uk-card-body" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "uk-button uk-button-danger uk-width-1-1 uk-margin-small-bottom",
+                  on: { click: _vm.deleteActivities }
+                },
+                [
+                  !_vm.deleteActivitiyLoading
+                    ? _c("span", [_vm._v("Activiteiten")])
+                    : _vm._e(),
+                  _vm.deleteActivitiyLoading
+                    ? _c("span", [_c("div", { attrs: { "uk-spinner": "" } })])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "uk-button uk-button-danger uk-width-1-1 uk-margin-small-bottom",
+                  on: { click: _vm.deleteSensorData }
+                },
+                [
+                  !_vm.deleteSensorLoading
+                    ? _c("span", [_vm._v("Sensordata")])
+                    : _vm._e(),
+                  _vm.deleteSensorLoading
+                    ? _c("span", [_c("div", { attrs: { "uk-spinner": "" } })])
+                    : _vm._e()
+                ]
+              )
+            ])
+          ])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "uk-width-1-2" }, [
           _c(
@@ -75867,12 +75962,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-width-1-4" }, [
-      _c("div", { staticClass: "uk-card uk-card-default" }, [
-        _c("div", { staticClass: "uk-card-body" }, [
-          _c("h3", { staticClass: "uk-card-title" }, [_vm._v("Overzicht")])
-        ])
-      ])
+    return _c("h5", { staticClass: "uk-heading-line uk-text-center" }, [
+      _c("span", [_vm._v("Acties")])
     ])
   },
   function() {
@@ -88213,7 +88304,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=template&id=299e239e& */ "./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&");
-/* harmony import */ var _ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _ExampleComponent_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=script&lang=ts& */ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=ts&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -88223,7 +88314,7 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ExampleComponent_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
   _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"],
   _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -88240,17 +88331,17 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=ts&":
 /*!*******************************************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/components/ExampleComponent.vue?vue&type=script&lang=ts& ***!
   \*******************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=script&lang=ts& */ "./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=ts&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -88390,8 +88481,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/pieterboersma/Desktop/camaro/backend/backend/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/pieterboersma/Desktop/camaro/backend/backend/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/backend/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/backend/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

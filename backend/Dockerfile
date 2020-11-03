@@ -24,6 +24,9 @@ RUN docker-php-ext-install pdo
 RUN docker-php-ext-install tokenizer
 RUN docker-php-ext-install xml
 
+# Install yarn
+RUN npm -g install yarn
+
 # No idea what this does
 ENV APACHE_DOCUMENT_ROOT /var/www/backend/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
