@@ -86,7 +86,8 @@
 
 </template>
 
-<script>
+<script lang="ts">
+
     import LineChart from './LineChart.vue'
     import PieChart from './PieChart.vue'
     import BarChart from './BarChart.vue'
@@ -101,7 +102,6 @@
         data () {
             return {
                 totalData: null,
-                test: [],
                 activityData: null,
                 monthlyData: null,
                 recentData: null,
@@ -111,7 +111,7 @@
    
         async mounted () {
 
-            axios.get('http://localhost:5000/activities/monthly').then(response => {
+            axios.get('http://imac-van-pieter.local:5000/activities/monthly').then(response => {
                     this.totalData = {
                         labels: response.data.map(x => x[1]),
                         datasets: [{
@@ -124,6 +124,12 @@
                             data: response.data.map(x => x[0])
                         }]
                     }
+            });
+
+            axios.get('http://imac-van-pieter.local:5000/activities/recent').then(response => {
+                this.recentData = response.data;
+
+                console.log(this.recentData);
             });
 
         },
