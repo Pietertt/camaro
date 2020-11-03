@@ -75693,6 +75693,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
         LineChart: _LineChart_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
@@ -75703,64 +75706,84 @@ __webpack_require__.r(__webpack_exports__);
     data () {
         return {
             totalData: null,
-            activityData: null,
-            monthlyData: null,
-            recentData: null,
-            totalValid: null,
-            totalInvalid: null
-
+            deleteSensorLoading: false,
+            deleteActivitiyLoading: false
         }
     },
 
     async mounted () {
 
-        axios.get('http://imac-van-pieter.local:5000/activities/monthly').then(response => {
-                this.totalData = {
-                    labels: response.data.map(x => x[1]),
-                    datasets: [{
-                        label: 'Activiteiten',
-                        borderColor: '#cc65fe',
-                        pointBackgroundColor: 'white',
-                        borderWidth: 2,
-                        pointBorderColor: '#cc65fe',
-                        backgroundColor: 'transparent',
-                        data: response.data.map(x => x[0])
-                    }]
-                }
-        });
+        try {
+            axios.get('http://imac-van-pieter.local:5000/activities/monthly').then(response => {
+                    this.totalData = {
+                        labels: response.data.map(x => x[1]),
+                        datasets: [{
+                            label: 'Activiteiten',
+                            borderColor: '#cc65fe',
+                            pointBackgroundColor: 'white',
+                            borderWidth: 2,
+                            pointBorderColor: '#cc65fe',
+                            backgroundColor: 'transparent',
+                            data: response.data.map(x => x[0])
+                        }]
+                    }
+            });
+        } catch(error){
 
-        axios.get('http://imac-van-pieter.local:5000/activities/recent').then(response => {
-            this.recentData = response.data;
-        });
+        }
 
-        axios.get('http://imac-van-pieter.local:5000/activities/valid/all').then(response => {
-            this.totalValid = response.data;
-        });
+        // try {
+        //     axios.get('http://imac-van-pieter.local:5000/activities/recent').then(response => {
+        //         this.recentData = response.data;
+        //     });
+        // } catch(error){
 
-        axios.get('http://imac-van-pieter.local:5000/activities/invalid/all').then(response => {
-            this.totalInvalid = response.data;
+        // }
 
-            this.activityData = {
-                labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
-                datasets: [{
-                    data: [this.totalValid, this.totalInvalid],
-                    backgroundColor: ['#ff6384', '#36a2eb']
+        // try {
+        //     axios.get('http://imac-van-pieter.local:5000/activities/valid/all').then(response => {
+        //         this.totalValid = response.data;
+        //     });
+        // } catch(error){
+            
+        // }
 
-                }]
-            }
-        });
+        // try {
+        //     axios.get('http://imac-van-pieter.local:5000/activities/invalid/all').then(response => {
+        //         this.totalInvalid = response.data;
+
+        //         this.activityData = {
+        //             labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
+        //             datasets: [{
+        //                 data: [this.totalValid, this.totalInvalid],
+        //                 backgroundColor: ['#ff6384', '#36a2eb']
+
+        //             }]
+        //         }
+        //     });
+        // } catch(error){
+
+        // }
     },
 
     methods: {
-        fillData () {
-            this.activityData = {
-                labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
-                datasets: [{
-                    data: [40, 60],
-                    backgroundColor: ['#ff6384', '#36a2eb']
+        
+        deleteActivities(){
+            this.deleteActivitiyLoading = true;
+            axios.get('http://imac-van-pieter.local:5000/activities/delete/all').then(response => {
+                if(response.data == 200){
+                    this.deleteActivitiyLoading = false;
+                }
+            });
+        },
 
-                }]
-            }
+        deleteSensorData(){
+            this.deleteSensorLoading = true;
+            axios.get('http://imac-van-pieter.local:5000/sensor/delete/all').then(response => {
+                if(response.data == 200){
+                    this.deleteSensorLoading = false;
+                }
+            });
         }
     }
 });
@@ -75806,7 +75829,47 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm._m(1),
+        _c("div", { staticClass: "uk-width-1-4" }, [
+          _c("div", { staticClass: "uk-card uk-card-default" }, [
+            _c("div", { staticClass: "uk-card-body" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "uk-button uk-button-danger uk-width-1-1 uk-margin-small-bottom",
+                  on: { click: _vm.deleteActivities }
+                },
+                [
+                  !_vm.deleteActivitiyLoading
+                    ? _c("span", [_vm._v("Activiteiten")])
+                    : _vm._e(),
+                  _vm.deleteActivitiyLoading
+                    ? _c("span", [_c("div", { attrs: { "uk-spinner": "" } })])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "uk-button uk-button-danger uk-width-1-1 uk-margin-small-bottom",
+                  on: { click: _vm.deleteSensorData }
+                },
+                [
+                  !_vm.deleteSensorLoading
+                    ? _c("span", [_vm._v("Sensordata")])
+                    : _vm._e(),
+                  _vm.deleteSensorLoading
+                    ? _c("span", [_c("div", { attrs: { "uk-spinner": "" } })])
+                    : _vm._e()
+                ]
+              )
+            ])
+          ])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "uk-width-1-2" }, [
           _c(
@@ -75899,12 +75962,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-width-1-4" }, [
-      _c("div", { staticClass: "uk-card uk-card-default" }, [
-        _c("div", { staticClass: "uk-card-body" }, [
-          _c("h3", { staticClass: "uk-card-title" }, [_vm._v("Overzicht")])
-        ])
-      ])
+    return _c("h5", { staticClass: "uk-heading-line uk-text-center" }, [
+      _c("span", [_vm._v("Acties")])
     ])
   },
   function() {

@@ -32,8 +32,11 @@
                 <div class="uk-width-1-4">
                     <div class="uk-card uk-card-default">
                         <div class="uk-card-body">
-                            <h3 class="uk-card-title">Overzicht</h3>
-                            
+                            <h5 class="uk-heading-line uk-text-center"><span>Acties</span></h5>
+                            <button class="uk-button uk-button-danger uk-width-1-1 uk-margin-small-bottom" @click=deleteActivities><span v-if="!deleteActivitiyLoading">Activiteiten</span><span v-if="deleteActivitiyLoading"><div uk-spinner></div></span></button>
+                            <button class="uk-button uk-button-danger uk-width-1-1 uk-margin-small-bottom" @click=deleteSensorData><span v-if="!deleteSensorLoading">Sensordata</span><span v-if="deleteSensorLoading"><div uk-spinner></div></span></button>
+                             
+                             
                         </div>
                     </div>
                 </div>
@@ -102,64 +105,84 @@
         data () {
             return {
                 totalData: null,
-                activityData: null,
-                monthlyData: null,
-                recentData: null,
-                totalValid: null,
-                totalInvalid: null
-
+                deleteSensorLoading: false,
+                deleteActivitiyLoading: false
             }
         },
    
         async mounted () {
 
-            axios.get('http://imac-van-pieter.local:5000/activities/monthly').then(response => {
-                    this.totalData = {
-                        labels: response.data.map(x => x[1]),
-                        datasets: [{
-                            label: 'Activiteiten',
-                            borderColor: '#cc65fe',
-                            pointBackgroundColor: 'white',
-                            borderWidth: 2,
-                            pointBorderColor: '#cc65fe',
-                            backgroundColor: 'transparent',
-                            data: response.data.map(x => x[0])
-                        }]
-                    }
-            });
+            try {
+                axios.get('http://imac-van-pieter.local:5000/activities/monthly').then(response => {
+                        this.totalData = {
+                            labels: response.data.map(x => x[1]),
+                            datasets: [{
+                                label: 'Activiteiten',
+                                borderColor: '#cc65fe',
+                                pointBackgroundColor: 'white',
+                                borderWidth: 2,
+                                pointBorderColor: '#cc65fe',
+                                backgroundColor: 'transparent',
+                                data: response.data.map(x => x[0])
+                            }]
+                        }
+                });
+            } catch(error){
 
-            axios.get('http://imac-van-pieter.local:5000/activities/recent').then(response => {
-                this.recentData = response.data;
-            });
+            }
 
-            axios.get('http://imac-van-pieter.local:5000/activities/valid/all').then(response => {
-                this.totalValid = response.data;
-            });
+            // try {
+            //     axios.get('http://imac-van-pieter.local:5000/activities/recent').then(response => {
+            //         this.recentData = response.data;
+            //     });
+            // } catch(error){
 
-            axios.get('http://imac-van-pieter.local:5000/activities/invalid/all').then(response => {
-                this.totalInvalid = response.data;
+            // }
 
-                this.activityData = {
-                    labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
-                    datasets: [{
-                        data: [this.totalValid, this.totalInvalid],
-                        backgroundColor: ['#ff6384', '#36a2eb']
+            // try {
+            //     axios.get('http://imac-van-pieter.local:5000/activities/valid/all').then(response => {
+            //         this.totalValid = response.data;
+            //     });
+            // } catch(error){
+                
+            // }
 
-                    }]
-                }
-            });
+            // try {
+            //     axios.get('http://imac-van-pieter.local:5000/activities/invalid/all').then(response => {
+            //         this.totalInvalid = response.data;
+
+            //         this.activityData = {
+            //             labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
+            //             datasets: [{
+            //                 data: [this.totalValid, this.totalInvalid],
+            //                 backgroundColor: ['#ff6384', '#36a2eb']
+
+            //             }]
+            //         }
+            //     });
+            // } catch(error){
+
+            // }
         },
     
         methods: {
-            fillData () {
-                this.activityData = {
-                    labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
-                    datasets: [{
-                        data: [40, 60],
-                        backgroundColor: ['#ff6384', '#36a2eb']
+            
+            deleteActivities(){
+                this.deleteActivitiyLoading = true;
+                axios.get('http://imac-van-pieter.local:5000/activities/delete/all').then(response => {
+                    if(response.data == 200){
+                        this.deleteActivitiyLoading = false;
+                    }
+                });
+            },
 
-                    }]
-                }
+            deleteSensorData(){
+                this.deleteSensorLoading = true;
+                axios.get('http://imac-van-pieter.local:5000/sensor/delete/all').then(response => {
+                    if(response.data == 200){
+                        this.deleteSensorLoading = false;
+                    }
+                });
             }
         }
     }

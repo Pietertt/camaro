@@ -46,6 +46,20 @@ def get_all_invalid_activities():
 
     return json.dumps(result)
 
+@app.route("/activities/delete/all")
+def delete_all_activities():
+    cursor.execute("DELETE FROM activities")
+    database.commit()
+
+    return str(200)
+
+@app.route("/sensor/delete/all")
+def delete_all_sensor():
+    cursor.execute("DELETE FROM sensor_values")
+    database.commit()
+
+    return str(200)
+
 @app.route("/activities/monthly")
 def get_activities_monthly():
     cursor.execute("SELECT DATE(activities.timestamp), COUNT(activities.timestamp) AS TOT FROM activities GROUP BY DATE(activities.timestamp)")
