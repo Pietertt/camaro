@@ -105,6 +105,8 @@
                 activityData: null,
                 monthlyData: null,
                 recentData: null,
+                totalValid: null,
+                totalInvalid: null
 
             }
         },
@@ -128,10 +130,24 @@
 
             axios.get('http://imac-van-pieter.local:5000/activities/recent').then(response => {
                 this.recentData = response.data;
-
-                console.log(this.recentData);
             });
 
+            axios.get('http://imac-van-pieter.local:5000/activities/valid/all').then(response => {
+                this.totalValid = response.data;
+            });
+
+            axios.get('http://imac-van-pieter.local:5000/activities/invalid/all').then(response => {
+                this.totalInvalid = response.data;
+
+                this.activityData = {
+                    labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
+                    datasets: [{
+                        data: [this.totalValid, this.totalInvalid],
+                        backgroundColor: ['#ff6384', '#36a2eb']
+
+                    }]
+                }
+            });
         },
     
         methods: {

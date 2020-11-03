@@ -32,6 +32,20 @@ def helloWorld():
 
     return json.dumps(results)
 
+@app.route("/activities/valid/all")
+def get_all_valid_activities():
+    cursor.execute("SELECT COUNT(activities.valid) FROM activities WHERE activities.valid = 1")
+    result = cursor.fetchall()
+
+    return json.dumps(result)
+
+@app.route("/activities/invalid/all")
+def get_all_invalid_activities():
+    cursor.execute("SELECT COUNT(activities.valid) FROM activities WHERE activities.valid = 0")
+    result = cursor.fetchall()
+
+    return json.dumps(result)
+
 @app.route("/activities/monthly")
 def get_activities_monthly():
     cursor.execute("SELECT DATE(activities.timestamp), COUNT(activities.timestamp) AS TOT FROM activities GROUP BY DATE(activities.timestamp)")
