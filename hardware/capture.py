@@ -6,7 +6,7 @@ import mysql.connector
 
 current_time = datetime.datetime.now()
 
-name = str(current_time.strftime("%Y%m%d%H%M%S%f")) + '.h264'
+name = str(current_time.strftime("%Y%m%d%H%M%S"))
 
 camera = picamera.PiCamera()
 camera.framerate = 25
@@ -17,14 +17,14 @@ camera.hflip = True
 camera.start_preview()
 time.sleep(1)
 
-camera.start_recording(name)
+camera.start_recording(name + ".h264")
 time.sleep(20)
 camera.stop_recording()
 camera.stop_preview()
 
 time.sleep(2)
 
-os.system("sudo mv " + name + " /home/pi/Desktop/project/videos")
+os.system("sudo mv " + name + ".h264 videos")
 
 database = mysql.connector.connect(
   host="imac-van-pieter",
@@ -36,8 +36,8 @@ database = mysql.connector.connect(
 
 mycursor = database.cursor()
 
-sql = "INSERT INTO `activities` (`ID`, `timestamp`, `valid`) VALUES (NULL, %s, %s)"
-val = (name, '1')
+sql = "INSERT INTO `activities` (`ID`, `timestamp`, `valid`, `userid`) VALUES (NULL, %s, %s, %s)"
+val = (name, '1', '1')
 mycursor.execute(sql, val)
 
 database.commit()
