@@ -1924,6 +1924,31 @@ var reactiveProp = vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["mixins"].reactivePr
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/charts/PieComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/charts/PieComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/es/index.js");
+
+var reactiveProp = vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["mixins"].reactiveProp;
+/* harmony default export */ __webpack_exports__["default"] = ({
+  "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["Pie"],
+  mixins: [reactiveProp],
+  props: ['options'],
+  mounted: function mounted() {
+    // this.chartData is created in the mixin.
+    // If you want to pass options please create a local options object
+    this.renderChart(this.chartData, this.options);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
 /*!*****************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
@@ -75588,7 +75613,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 /* harmony default export */ __webpack_exports__["default"] = ({
 
 });
@@ -75805,8 +75829,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-   
+
+   data(){
+       return {
+           activityData: null
+       }
+   },
+
+   mounted(){
+       this.fillData()
+   },
+
+   methods: {
+       fillData(){
+            this.activityData = {
+                labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
+                datasets: [{
+                    data: [40, 60],
+                    backgroundColor: ['#ff6384', '#36a2eb']
+                }]
+            }
+        }
+    }
 });
 
 
@@ -76110,25 +76158,29 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "uk-card uk-card-default uk-card-body" },
-    [
-      _c("h3", { staticClass: "uk-card-title" }, [_vm._v("Statistieken")]),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c("pie-chart", { attrs: { "chart-data": _vm.activityData } })
-    ],
-    1
-  )
+  return _c("div", { staticClass: "uk-card uk-card-default uk-card-body" }, [
+    _c("h3", { staticClass: "uk-card-title" }, [_vm._v("Statistieken")]),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "uk-switcher" },
+      [
+        _c("pie-component", { attrs: { "chart-data": _vm.activityData } }),
+        _vm._v(" "),
+        _c("div", [_vm._v("Hoi")])
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", { attrs: { "uk-tab": "" } }, [
+    return _c("ul", { attrs: { "uk-tab": "", "uk-switcher": "" } }, [
       _c("li", { staticClass: "uk-active" }, [
         _c("a", { attrs: { href: "#" } }, [_vm._v("Validiteit")])
       ]),
@@ -88337,6 +88389,7 @@ Vue.component('actions-component', __webpack_require__(/*! ./components/dashboar
 Vue.component('activities-component', __webpack_require__(/*! ./components/dashboard/ActivitiesComponent.vue */ "./resources/js/components/dashboard/ActivitiesComponent.vue")["default"]);
 Vue.component('statistics-component', __webpack_require__(/*! ./components/dashboard/StatisticsComponent.vue */ "./resources/js/components/dashboard/StatisticsComponent.vue")["default"]);
 Vue.component('line-component', __webpack_require__(/*! ./components/charts/LineComponent.vue */ "./resources/js/components/charts/LineComponent.vue")["default"]);
+Vue.component('pie-component', __webpack_require__(/*! ./components/charts/PieComponent.vue */ "./resources/js/components/charts/PieComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -88510,6 +88563,56 @@ component.options.__file = "resources/js/components/charts/LineComponent.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LineComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./LineComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/charts/LineComponent.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LineComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/charts/PieComponent.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/charts/PieComponent.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PieComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PieComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/charts/PieComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  _PieComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/charts/PieComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/charts/PieComponent.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/charts/PieComponent.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PieComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PieComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/charts/PieComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PieComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 

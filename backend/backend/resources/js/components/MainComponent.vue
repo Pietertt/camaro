@@ -27,9 +27,8 @@
                 <div class="uk-width-1-2">
                     <activities-component></activities-component>
                 </div>
-
+                
             </div>
-
         </div>
     </div>
 

@@ -27,6 +27,7 @@ Vue.component('activities-component', require('./components/dashboard/Activities
 Vue.component('statistics-component', require('./components/dashboard/StatisticsComponent.vue').default)
 
 Vue.component('line-component', require('./components/charts/LineComponent.vue').default)
+Vue.component('pie-component', require('./components/charts/PieComponent.vue').default)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
