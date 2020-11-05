@@ -19,7 +19,14 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('main-component', require('./components/MainComponent.vue').default);
+Vue.component('menu-component', require('./components/dashboard/MenuComponent.vue').default)
+Vue.component('monthly-component', require('./components/dashboard/MonthlyComponent.vue').default)
+Vue.component('actions-component', require('./components/dashboard/ActionsComponent.vue').default)
+Vue.component('activities-component', require('./components/dashboard/ActivitiesComponent.vue').default)
+Vue.component('statistics-component', require('./components/dashboard/StatisticsComponent.vue').default)
+
+Vue.component('line-component', require('./components/charts/LineComponent.vue').default)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
