@@ -8,6 +8,7 @@
 <script lang="ts">
 
     import LineComponent from './../charts/LineComponent.vue'
+    import axios from 'axios';
 
     export default {
         data () {

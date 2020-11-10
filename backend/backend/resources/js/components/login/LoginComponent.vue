@@ -36,10 +36,18 @@
 <script lang="ts">
     import Vue from 'vue'
     import VueRouter from 'vue-router'
+    import axios from 'axios'
 
     import DashboardComponent from './../dashboard/DashboardComponent.vue';
 
-    const router = new VueRouter({
+    const routes = [{
+        path: '/test',
+        name: 'Home',
+        component: DashboardComponent
+        }
+    ];
+
+    const router = new VueRouter({routes
 })
 
     export default {
@@ -48,7 +56,7 @@
             validate(){
                 axios.get('http://imac-van-pieter.local:4000').then(response => {
                     if(response.data == true){
-                        router.push({ path: '/user/:id', component: DashboardComponent });
+                        this.$router.push('/dashboard')
                     }
                 });
             }

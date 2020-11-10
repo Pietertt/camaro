@@ -34,6 +34,15 @@ def helloWorld():
     return json.dumps(results)
 
 
+@app.route("/activities/all")
+def get_all_activities():
+    cursor.execute("SELECT * FROM `activities`")
+    result = cursor.fetchall()
+
+    return json.dumps(result)
+
+
+
 @app.route("/activities/valid/all")
 def get_all_valid_activities():
     cursor.execute("SELECT COUNT(activities.valid) FROM activities WHERE activities.valid = 1")

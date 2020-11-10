@@ -18,12 +18,15 @@
                     </tr>
                 </tbody>
             </table>
-            <a class="uk-button uk-button-default" href="#">Alle activiteiten</a>
+            <router-link class="uk-button uk-button-default" to="/dashboard/activiteiten">Alle activiteiten</router-link>
         </div>
     </div>
 </template>
 
 <script lang="ts">
+
+    import axios from 'axios';
+
     export default {
         data () {
             return {

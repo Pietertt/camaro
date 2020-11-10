@@ -31,14 +31,15 @@
             </div>
         </div>
     </div>
-
-
-
-
-
 </template>
 
 <script lang="ts">
+
+    import MenuComponent from './MenuComponent'
+    import MonthlyComponent from './MonthlyComponent'
+    import ActionsComponent from './ActionsComponent'
+    import ActivitiesComponent from './ActivitiesComponent'
+    import StatisticsComponent from './StatisticsComponent'
 
     export default {
     
