@@ -75711,9 +75711,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-    
-});
+    /* harmony default export */ __webpack_exports__["default"] = ({
+        data () {
+            return {
+                recentData: [],
+            }
+        },  
+
+        async mounted () {
+
+setTimeout(() =>
+                axios.get('http://imac-van-pieter.local:5000/activities/recent').then(response => {
+                    this.recentData = response.data;
+                }), 2000);
+          
+        }
+    });
 
 
 /***/ }),
@@ -75840,21 +75853,18 @@ __webpack_require__.r(__webpack_exports__);
        }
    },
 
-   mounted(){
-       this.fillData()
-   },
-
-   methods: {
-       fillData(){
-            this.activityData = {
-                labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
-                datasets: [{
-                    data: [40, 60],
-                    backgroundColor: ['#ff6384', '#36a2eb']
-                }]
-            }
-        }
-    }
+   async mounted(){
+        setTimeout(() => axios.get('http://imac-van-pieter.local:5000/activities/percentage').then(response => {
+                this.activityData = {
+                    labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
+                    datasets: [{
+                        data: [response.data[0], response.data[1]],
+                        backgroundColor: ['#ff6384', '#36a2eb']
+                    }]
+                }
+            }), 5000)
+   
+   }
 });
 
 
@@ -88979,8 +88989,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/backend/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/backend/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/pieterboersma/Desktop/camaro/backend/backend/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/pieterboersma/Desktop/camaro/backend/backend/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

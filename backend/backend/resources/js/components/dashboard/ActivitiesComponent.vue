@@ -25,6 +25,19 @@
 
 <script lang="ts">
     export default {
-        
+        data () {
+            return {
+                recentData: [],
+            }
+        },  
+
+        async mounted () {
+
+setTimeout(() =>
+                axios.get('http://imac-van-pieter.local:5000/activities/recent').then(response => {
+                    this.recentData = response.data;
+                }), 2000);
+          
+        }
     }
 </script>

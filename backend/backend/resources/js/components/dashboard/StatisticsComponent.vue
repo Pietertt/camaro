@@ -23,21 +23,18 @@
            }
        },
 
-       mounted(){
-           this.fillData()
-       },
-
-       methods: {
-           fillData(){
-                this.activityData = {
-                    labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
-                    datasets: [{
-                        data: [40, 60],
-                        backgroundColor: ['#ff6384', '#36a2eb']
-                    }]
-                }
-            }
-        }
+       async mounted(){
+            setTimeout(() => axios.get('http://imac-van-pieter.local:5000/activities/percentage').then(response => {
+                    this.activityData = {
+                        labels: ["Aantal valide meldingen", "Aantal invalide meldingen"],
+                        datasets: [{
+                            data: [response.data[0], response.data[1]],
+                            backgroundColor: ['#ff6384', '#36a2eb']
+                        }]
+                    }
+                }), 5000)
+       
+       }
     }
     
 </script>
