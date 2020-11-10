@@ -4,17 +4,25 @@
 
         </div>
         <div>
-            <form>
+            <form v-on:submit.prevent="onSubmit">
                 <fieldset class="uk-fieldset">
                     <legend class="uk-legend">Inloggen</legend>
+                    
                     <div class="uk-margin">
-                        <input class="uk-input" type="text" placeholder="Gebruikersnaam" name="username">
+                        <div class="uk-inline">
+                            <span class="uk-form-icon" uk-icon="icon: user"></span>
+                            <input class="uk-input uk-form-width-large" type="text" name="username" placeholder="Gebruikersnaam">
+                        </div>
+                    </div>
+
+                    <div class="uk-margin">
+                        <div class="uk-inline">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input uk-form-width-large" type="password" name="password" placeholder="Wachtwoord">
+                        </div>
                     </div>
                     <div class="uk-margin">
-                        <input class="uk-input" type="text" placeholder="Wachtwoord" name="password">
-                    </div>
-                    <div class="uk-margin">
-                         <button class="uk-button uk-width-1-1 uk-button-primary">Inloggen</button>
+                         <button class="uk-button uk-width-1-1 uk-button-primary" v-on:click="validate">Inloggen</button>
                     </div>
                 </fieldset>
             </form>
@@ -26,9 +34,25 @@
 </template>
 
 <script lang="ts">
+    import Vue from 'vue'
+    import VueRouter from 'vue-router'
+
+    import DashboardComponent from './../dashboard/DashboardComponent.vue';
+
+    const router = new VueRouter({
+})
 
     export default {
-    
+
+        methods: {
+            validate(){
+                axios.get('http://imac-van-pieter.local:4000').then(response => {
+                    if(response.data == true){
+                        router.push({ path: '/user/:id', component: DashboardComponent });
+                    }
+                });
+            }
+        }
     }
     
 </script>
