@@ -4,16 +4,17 @@ version: '3.2'
 services:
 
   laravel:
+    container_name: Backend
     build: ./backend
     ports:
       - "8000:80"
     volumes:
       - ./backend:/var/www/:cached 
-    container_name: laravel
     networks:
       - default
 
   mysql:
+    container_name: MySQL
     image: mysql:8.0
     restart: always
     ports:
@@ -29,6 +30,7 @@ services:
       - default
 
   phpmyadmin:
+    container_name: PHPMyAdmin
     depends_on:
       - mysql
     image: phpmyadmin/phpmyadmin
@@ -43,11 +45,22 @@ services:
       - default
   
   api:
+    container_name: API
     build: ./api
     volumes:
       - ./api:/api
     ports:
       - "5000:5000"
+    networks:
+      - default
+
+  auth:
+    container_name: Authentication
+    build: ./authentication
+    volumes:
+      - ./authentication:/var/www/
+    ports:
+      - "4000:80"
     networks:
       - default
 

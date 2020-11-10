@@ -25,6 +25,9 @@ Vue.component('monthly-component', require('./components/dashboard/MonthlyCompon
 Vue.component('actions-component', require('./components/dashboard/ActionsComponent.vue').default)
 Vue.component('activities-component', require('./components/dashboard/ActivitiesComponent.vue').default)
 Vue.component('statistics-component', require('./components/dashboard/StatisticsComponent.vue').default)
+Vue.component('dashboard-component', require('./components/dashboard/DashboardComponent.vue').default)
+
+Vue.component('login-component', require('./components/dashboard/LoginComponent.vue').default)
 
 Vue.component('line-component', require('./components/charts/LineComponent.vue').default)
 Vue.component('pie-component', require('./components/charts/PieComponent.vue').default)
