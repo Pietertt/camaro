@@ -19,7 +19,6 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('main-component', require('./components/MainComponent.vue').default);
 Vue.component('menu-component', require('./components/dashboard/MenuComponent.vue').default)
 Vue.component('monthly-component', require('./components/dashboard/MonthlyComponent.vue').default)
 Vue.component('actions-component', require('./components/dashboard/ActionsComponent.vue').default)
@@ -27,7 +26,7 @@ Vue.component('activities-component', require('./components/dashboard/Activities
 Vue.component('statistics-component', require('./components/dashboard/StatisticsComponent.vue').default)
 Vue.component('dashboard-component', require('./components/dashboard/DashboardComponent.vue').default)
 
-Vue.component('login-component', require('./components/dashboard/LoginComponent.vue').default)
+Vue.component('login-component', require('./components/login/LoginComponent.vue').default)
 
 Vue.component('line-component', require('./components/charts/LineComponent.vue').default)
 Vue.component('pie-component', require('./components/charts/PieComponent.vue').default)

@@ -14,7 +14,7 @@
     </head>
     <body>
         <div id="app">
-            <main-component></main-component>
+            <login-component></login-component>
         </div>
     
         <script type="text/javascript" src="js/app.js"></script>
