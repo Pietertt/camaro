@@ -56,7 +56,7 @@
     <div class="uk-container">
         <blockquote cite="#">
             <p class="uk-margin-small-bottom">The most secure camera security system that has ever been developed. This product is a real recommendation if you value your privacy and don't want to break the bank.</p>
-            <footer>Someone famous in <cite><a href="#">Source Title</a></cite></footer>
+            <footer>Bill Gates</footer>
         </blockquote>
     </div>
 </div>

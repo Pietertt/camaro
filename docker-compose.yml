@@ -63,6 +63,16 @@ services:
       - "4000:80"
     networks:
       - default
+  
+  promo:
+    container_name: Promotional_website
+    build: ./promo
+    volumes:
+      - ./promo:/var/www/html/
+    ports:
+      - "3000:80"
+    networks:
+      - default
 
 networks: 
   default:
