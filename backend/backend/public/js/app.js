@@ -41433,7 +41433,8 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "uk-button uk-width-1-1 uk-button-primary",
+                    staticClass:
+                      "uk-button uk-form-width-large uk-button-primary",
                     on: { click: _vm.validate }
                   },
                   [_vm._v("Inloggen")]

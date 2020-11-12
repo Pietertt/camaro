@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="uk-margin">
-                         <button class="uk-button uk-width-1-1 uk-button-primary" v-on:click="validate">Inloggen</button>
+                         <button class="uk-button uk-form-width-large uk-button-primary" v-on:click="validate">Inloggen</button>
                     </div>
                 </fieldset>
             </form>
