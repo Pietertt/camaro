@@ -1,5 +1,5 @@
 <template>
-    <div class="uk-child-width-expand@s uk-text-center uk-padding-large uk-background-secondary" uk-height-viewport="expand" uk-grid>
+    <div class="uk-child-width-expand@s uk-text-center uk-padding-large" uk-height-viewport="expand" uk-grid>
         <div>
 
         </div>
@@ -18,7 +18,6 @@
                                 v-model="username">
                         </div>
                     </div>
-
                     <div class="uk-margin">
                         <div class="uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: lock"></span>
@@ -88,6 +87,7 @@
                     this.$router.push('/dashboard');
                 }).catch(error => {
                     this.loading = false;
+                    UIkit.notification({message: '<span uk-icon=\'icon: bell\'></span> Het is niet gelukt om in te loggen', status: 'danger', pos: 'top-left'})
                 });
             }
         }

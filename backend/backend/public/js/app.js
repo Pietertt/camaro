@@ -40909,7 +40909,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
     
     
     
@@ -40949,6 +40948,7 @@ __webpack_require__.r(__webpack_exports__);
                     this.$router.push('/dashboard');
                 }).catch(error => {
                     this.loading = false;
+                    UIkit.notification({message: '<span uk-icon=\'icon: bell\'></span> Het is niet gelukt om in te loggen', status: 'danger', pos: 'top-left'})
                 });
             }
         }
@@ -41395,8 +41395,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass:
-        "uk-child-width-expand@s uk-text-center uk-padding-large uk-background-secondary",
+      staticClass: "uk-child-width-expand@s uk-text-center uk-padding-large",
       attrs: { "uk-height-viewport": "expand", "uk-grid": "" }
     },
     [
