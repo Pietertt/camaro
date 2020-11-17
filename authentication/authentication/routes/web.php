@@ -1,6 +1,7 @@
 <?php
 
 use \App\Models\User;
+use \App\Http\Controllers\ValidationController;
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
@@ -15,6 +16,4 @@ use \App\Models\User;
 |
 */
 
-$router->get('/', function () use ($router) {
-    return User::all();
-});
+$router->post('/valid', 'TestController@test');
