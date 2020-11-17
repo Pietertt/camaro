@@ -1,5 +1,5 @@
 <template>
-    <div class="uk-child-width-expand@s uk-text-center uk-margin-top" uk-grid>
+    <div class="uk-child-width-expand@s uk-text-center uk-padding-large uk-background-secondary" uk-height-viewport="expand" uk-grid>
         <div>
 
         </div>
@@ -66,6 +66,8 @@
 })
 
     export default {
+
+        
 
         data(){
             return {

@@ -40928,6 +40928,8 @@ __webpack_require__.r(__webpack_exports__);
 
     /* harmony default export */ __webpack_exports__["default"] = ({
 
+        
+
         data(){
             return {
                 loading: false,
@@ -41393,8 +41395,9 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "uk-child-width-expand@s uk-text-center uk-margin-top",
-      attrs: { "uk-grid": "" }
+      staticClass:
+        "uk-child-width-expand@s uk-text-center uk-padding-large uk-background-secondary",
+      attrs: { "uk-height-viewport": "expand", "uk-grid": "" }
     },
     [
       _c("div"),
@@ -57390,15 +57393,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************************!*\
   !*** ./resources/js/components/login/LoginComponent.vue ***!
   \**********************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LoginComponent_vue_vue_type_template_id_c4ab7a36___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LoginComponent.vue?vue&type=template&id=c4ab7a36& */ "./resources/js/components/login/LoginComponent.vue?vue&type=template&id=c4ab7a36&");
 /* harmony import */ var _LoginComponent_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoginComponent.vue?vue&type=script&lang=ts& */ "./resources/js/components/login/LoginComponent.vue?vue&type=script&lang=ts&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _LoginComponent_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _LoginComponent_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -57428,7 +57430,7 @@ component.options.__file = "resources/js/components/login/LoginComponent.vue"
 /*!***********************************************************************************!*\
   !*** ./resources/js/components/login/LoginComponent.vue?vue&type=script&lang=ts& ***!
   \***********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
