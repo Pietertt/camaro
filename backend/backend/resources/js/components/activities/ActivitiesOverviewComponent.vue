@@ -30,7 +30,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <a class="uk-button uk-button-default" href="#">Alle activiteiten</a>
                         </div>
                     </div>
                 </div>

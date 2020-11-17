@@ -22,7 +22,6 @@ Vue.component('line-component', require('./components/charts/LineComponent.vue')
 Vue.component('pie-component', require('./components/charts/PieComponent.vue').default)
 
 const router = new VueRouter({
-    mode: 'history',
     routes: [
         {
             path: '/dashboard',

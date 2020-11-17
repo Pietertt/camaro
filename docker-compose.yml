@@ -59,6 +59,7 @@ services:
     build: ./authentication
     volumes:
       - ./authentication:/var/www/
+      - ./authentication/php.ini:/usr/local/etc/php/php.ini
     ports:
       - "4000:80"
     networks:

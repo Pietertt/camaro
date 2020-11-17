@@ -1,5 +1,7 @@
 <?php
 
+use \App\Models\User;
+
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -14,5 +16,5 @@
 */
 
 $router->get('/', function () use ($router) {
-    return true;
+    return User::all();
 });

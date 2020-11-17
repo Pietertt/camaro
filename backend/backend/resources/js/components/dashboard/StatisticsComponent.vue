@@ -1,15 +1,7 @@
 <template>
    <div class="uk-card uk-card-default uk-card-body">
     <h3 class="uk-card-title">Statistieken</h3>
-        <ul uk-tab uk-switcher>
-            <li class="uk-active"><a href="#">Validiteit</a></li>
-            <li><a href="#">Per maand</a></li>
-        </ul>
-
-        <div class="uk-switcher">
-            <pie-component :chart-data="activityData"></pie-component>
-            <div>Hoi</div>
-        </div>
+        <pie-component :chart-data="activityData"></pie-component>
     </div>
 </template>
 

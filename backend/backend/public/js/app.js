@@ -40510,7 +40510,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 /* harmony default export */ __webpack_exports__["default"] = ({
     data () {
         return {
@@ -40621,24 +40620,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-    
 
-    /* harmony default export */ __webpack_exports__["default"] = ({
-        data () {
-            return {
-                recentData: [],
-            }
-        },  
 
-        async mounted () {
-
-setTimeout(() =>
-                axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://imac-van-pieter.local:5000/activities/recent').then(response => {
-                    this.recentData = response.data;
-                }), 2000);
-          
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data () {
+        return {
+            recentData: [],
         }
-    });
+    },  
+
+    async mounted () {
+        setTimeout(() =>
+            axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://imac-van-pieter.local:5000/activities/recent').then(response => {
+                this.recentData = response.data;
+            }), 2000); 
+    }
+});
 
 
 /***/ }),
@@ -40821,14 +40818,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
-
 /* harmony default export */ __webpack_exports__["default"] = ({
 
    data(){
@@ -40991,15 +40980,6 @@ var render = function() {
                     0
                   )
                 ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "uk-button uk-button-default",
-                  attrs: { href: "#" }
-                },
-                [_vm._v("Alle activiteiten")]
               )
             ])
           ])
@@ -41349,37 +41329,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "uk-card uk-card-default uk-card-body" }, [
-    _c("h3", { staticClass: "uk-card-title" }, [_vm._v("Statistieken")]),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "uk-switcher" },
-      [
-        _c("pie-component", { attrs: { "chart-data": _vm.activityData } }),
-        _vm._v(" "),
-        _c("div", [_vm._v("Hoi")])
-      ],
-      1
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", { attrs: { "uk-tab": "", "uk-switcher": "" } }, [
-      _c("li", { staticClass: "uk-active" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Validiteit")])
-      ]),
+  return _c(
+    "div",
+    { staticClass: "uk-card uk-card-default uk-card-body" },
+    [
+      _c("h3", { staticClass: "uk-card-title" }, [_vm._v("Statistieken")]),
       _vm._v(" "),
-      _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Per maand")])])
-    ])
-  }
-]
+      _c("pie-component", { attrs: { "chart-data": _vm.activityData } })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -56774,7 +56735,6 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('activities-overview-compon
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('line-component', __webpack_require__(/*! ./components/charts/LineComponent.vue */ "./resources/js/components/charts/LineComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('pie-component', __webpack_require__(/*! ./components/charts/PieComponent.vue */ "./resources/js/components/charts/PieComponent.vue")["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  mode: 'history',
   routes: [{
     path: '/dashboard',
     component: _components_dashboard_DashboardComponent__WEBPACK_IMPORTED_MODULE_2__["default"]
