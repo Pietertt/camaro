@@ -40895,6 +40895,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
     
@@ -40913,12 +40928,25 @@ __webpack_require__.r(__webpack_exports__);
 
     /* harmony default export */ __webpack_exports__["default"] = ({
 
+        data(){
+            return {
+                loading: false,
+                username: '',
+                password: ''
+            }
+        },
+
         methods: {
             validate(){
-                axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://imac-van-pieter.local:4000').then(response => {
-                    if(response.data == true){
-                        this.$router.push('/dashboard')
-                    }
+                this.loading = true;
+                axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('http://imac-van-pieter.local:4000/valid', {
+                    username: this.username,
+                    password: this.password
+                }).then(response => {
+                    this.loading = false;
+                    this.$router.push('/dashboard');
+                }).catch(error => {
+                    this.loading = false;
                 });
             }
         }
@@ -41378,7 +41406,7 @@ var render = function() {
             on: {
               submit: function($event) {
                 $event.preventDefault()
-                return _vm.onSubmit($event)
+                return _vm.validate($event)
               }
             }
           },
@@ -41386,19 +41414,86 @@ var render = function() {
             _c("fieldset", { staticClass: "uk-fieldset" }, [
               _c("legend", { staticClass: "uk-legend" }, [_vm._v("Inloggen")]),
               _vm._v(" "),
-              _vm._m(0),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("div", { staticClass: "uk-inline" }, [
+                  _c("span", {
+                    staticClass: "uk-form-icon",
+                    attrs: { "uk-icon": "icon: user" }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.username,
+                        expression: "username"
+                      }
+                    ],
+                    staticClass: "uk-input uk-form-width-large",
+                    attrs: { type: "text", placeholder: "Gebruikersnaam" },
+                    domProps: { value: _vm.username },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.username = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ]),
               _vm._v(" "),
-              _vm._m(1),
+              _c("div", { staticClass: "uk-margin" }, [
+                _c("div", { staticClass: "uk-inline" }, [
+                  _c("span", {
+                    staticClass: "uk-form-icon",
+                    attrs: { "uk-icon": "icon: lock" }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.password,
+                        expression: "password"
+                      }
+                    ],
+                    staticClass: "uk-input uk-form-width-large",
+                    attrs: {
+                      type: "password",
+                      name: "password",
+                      placeholder: "Wachtwoord"
+                    },
+                    domProps: { value: _vm.password },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.password = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "uk-margin" }, [
                 _c(
                   "button",
                   {
                     staticClass:
-                      "uk-button uk-form-width-large uk-button-primary",
-                    on: { click: _vm.validate }
+                      "uk-button uk-form-width-large uk-button-primary"
                   },
-                  [_vm._v("Inloggen")]
+                  [
+                    !_vm.loading ? _c("span", [_vm._v("Inloggen")]) : _vm._e(),
+                    _vm._v(" "),
+                    _vm.loading
+                      ? _c("span", [_c("div", { attrs: { "uk-spinner": "" } })])
+                      : _vm._e()
+                  ]
                 )
               ])
             ])
@@ -41410,52 +41505,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-margin" }, [
-      _c("div", { staticClass: "uk-inline" }, [
-        _c("span", {
-          staticClass: "uk-form-icon",
-          attrs: { "uk-icon": "icon: user" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "uk-input uk-form-width-large",
-          attrs: {
-            type: "text",
-            name: "username",
-            placeholder: "Gebruikersnaam"
-          }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "uk-margin" }, [
-      _c("div", { staticClass: "uk-inline" }, [
-        _c("span", {
-          staticClass: "uk-form-icon",
-          attrs: { "uk-icon": "icon: lock" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "uk-input uk-form-width-large",
-          attrs: {
-            type: "password",
-            name: "password",
-            placeholder: "Wachtwoord"
-          }
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -57340,14 +57390,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************************!*\
   !*** ./resources/js/components/login/LoginComponent.vue ***!
   \**********************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LoginComponent_vue_vue_type_template_id_c4ab7a36___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LoginComponent.vue?vue&type=template&id=c4ab7a36& */ "./resources/js/components/login/LoginComponent.vue?vue&type=template&id=c4ab7a36&");
 /* harmony import */ var _LoginComponent_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoginComponent.vue?vue&type=script&lang=ts& */ "./resources/js/components/login/LoginComponent.vue?vue&type=script&lang=ts&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _LoginComponent_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _LoginComponent_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -57377,7 +57428,7 @@ component.options.__file = "resources/js/components/login/LoginComponent.vue"
 /*!***********************************************************************************!*\
   !*** ./resources/js/components/login/LoginComponent.vue?vue&type=script&lang=ts& ***!
   \***********************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
