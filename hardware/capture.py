@@ -1,45 +1,24 @@
+from current_time import current_time
+from database import database
+from camera import camera
 import picamera
-import time
-import os
-import datetime
-import mysql.connector
 
-current_time = datetime.datetime.now()
+db = database()
+current_time = current_time()
+camera = camera()
 
-name = str(current_time.strftime("%Y%m%d%H%M%S"))
+timestamp = (str(current_time.get_time()))
+valid = 1
+userid = 1
 
-camera = picamera.PiCamera()
-camera.framerate = 25
-camera.resolution = (640, 480)
-camera.vflip = True
-camera.hflip = True
+camera.take_photo()
+camera.take_video(20)
 
-camera.start_preview()
-time.sleep(1)
+db.connect()
+col_headers = ['activities', 'timestamp', 'valid', 'userid']
+col_values = [timestamp, valid, userid]
 
-camera.start_recording(name + ".h264")
-time.sleep(20)
-camera.stop_recording()
-camera.stop_preview()
+db.insert(col_headers, col_values)
 
-time.sleep(2)
 
-os.system("sudo mv " + name + ".h264 videos")
 
-database = mysql.connector.connect(
-  host="imac-van-pieter",
-  user="root",
-  password="root",
-  database="camaro",
-  port="3306"
-)
-
-mycursor = database.cursor()
-
-sql = "INSERT INTO `activities` (`ID`, `timestamp`, `valid`, `userid`) VALUES (NULL, %s, %s, %s)"
-val = (name, '1', '1')
-mycursor.execute(sql, val)
-
-database.commit()
-
-print(mycursor.rowcount, "record inserted.")
