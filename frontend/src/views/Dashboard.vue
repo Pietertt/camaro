@@ -39,12 +39,16 @@
     import MenuComponent from '@/components/dashboard/MenuComponent.vue';
     import ActionsComponent from '@/components/dashboard/ActionsComponent.vue';
     import MonthlyComponent from '@/components/dashboard/MonthlyComponent.vue';
+    import ActivitiesComponent from '@/components/dashboard/ActivitiesComponent.vue';
+    import StatisticsComponent from '@/components/dashboard/StatisticsComponent.vue';
 
     @Component({
         components: {
             MenuComponent,
             ActionsComponent,
-            MonthlyComponent
+            MonthlyComponent,
+            ActivitiesComponent,
+            StatisticsComponent
         }
     })
     export default class Dashboard extends Vue {
