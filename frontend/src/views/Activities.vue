@@ -39,20 +39,34 @@
 </template>
 
 <script lang="ts">
-
+    import { Component, Vue } from 'vue-property-decorator';
     import axios from 'axios';
+    import VueRouter, { Route } from 'vue-router';
     
-    export default {
-        data () {
-            return {
-                recentData: [],
-            }
-        },  
+    import MenuComponent from '@/components/dashboard/MenuComponent.vue';
+    import ActionsComponent from '@/components/dashboard/ActionsComponent.vue';
+    import MonthlyComponent from '@/components/dashboard/MonthlyComponent.vue';
+    import ActivitiesComponent from '@/components/dashboard/ActivitiesComponent.vue';
+    import StatisticsComponent from '@/components/dashboard/StatisticsComponent.vue';
 
-        async mounted () {
-                axios.get('http://imac-van-pieter.local:5000/activities/all').then(response => {
-                    this.recentData = response.data;
-                });
+    @Component({
+        components: {
+            MenuComponent
+        }
+    })
+    export default class Activities extends Vue {
+
+        private recentData = [];
+
+        mounted(): void {
+            this.loadActivities();
+        }
+        
+        loadActivities(): void {
+            axios.get('http://imac-van-pieter.local:5000/activities/all').then(response => {
+                this.recentData = response.data;
+            });
         }
     }
+    
 </script>

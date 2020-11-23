@@ -18,7 +18,7 @@
                     </tr>
                 </tbody>
             </table>
-            <router-link class="uk-button uk-button-default" to="/dashboard/activiteiten">Alle activiteiten</router-link>
+            <router-link class="uk-button uk-button-default" to="/activities">Alle activiteiten</router-link>
         </div>
     </div>
 </template>

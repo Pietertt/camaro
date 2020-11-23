@@ -3,7 +3,7 @@ version: '3.2'
 
 services:
 
-  vue:
+  frontend:
     container_name: frontend
     build: ./frontend
     ports:
@@ -14,7 +14,7 @@ services:
       - default
 
   mysql:
-    container_name: MySQL
+    container_name: mysql
     image: mysql:8.0
     restart: always
     ports:
@@ -30,7 +30,7 @@ services:
       - default
 
   phpmyadmin:
-    container_name: PHPMyAdmin
+    container_name: phpmyadmin
     depends_on:
       - mysql
     image: phpmyadmin/phpmyadmin
@@ -45,7 +45,7 @@ services:
       - default
   
   api:
-    container_name: API
+    container_name: api
     build: ./api
     volumes:
       - ./api:/api
@@ -55,7 +55,7 @@ services:
       - default
 
   auth:
-    container_name: Authentication
+    container_name: auth
     build: ./authentication
     volumes:
       - ./authentication:/var/www/
@@ -66,7 +66,7 @@ services:
       - default
   
   promo:
-    container_name: Promotional_website
+    container_name: promo
     build: ./promo
     volumes:
       - ./promo:/var/www/html/
