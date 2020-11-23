@@ -7,37 +7,71 @@
 
 <script lang="ts">
 
-    // import LineComponent from './../charts/LineComponent.vue'
-    // import axios from 'axios';
+    import { Component, Vue } from 'vue-property-decorator'
 
-    // export default {
-    //     data () {
-    //         return {
-    //             totalData: null,
-    //         }
-    //     },  
+    import LineComponent from './../charts/LineComponent.vue'
+    import axios from 'axios';
 
-    //     async mounted () {
+    @Component
+    export default class MonthlyComponent extends Vue {
+        private totalData = {
+            labels: [1, 2, 3, 4],
+            datasets: [{
+                label: 'Activiteiten',
+                borderColor: '#cc65fe',
+                pointBackgroundColor: 'white',
+                borderWidth: 2,
+                pointBorderColor: '#cc65fe',
+                backgroundColor: 'transparent',
+                data: [1, 2, 3, 4]
+            }]
+        };
 
-    //         try {
-    //             axios.get('http://imac-van-pieter.local:5000/activities/monthly').then(response => {
-    //                     this.totalData = {
-    //                         labels: response.data.map(x => x[1]),
-    //                         datasets: [{
-    //                             label: 'Activiteiten',
-    //                             borderColor: '#cc65fe',
-    //                             pointBackgroundColor: 'white',
-    //                             borderWidth: 2,
-    //                             pointBorderColor: '#cc65fe',
-    //                             backgroundColor: 'transparent',
-    //                             data: response.data.map(x => x[0])
-    //                         }]
-    //                     }
-    //             });
-    //         } catch(error){
+        mounted(){
+            this.validate();
+        }
 
-    //         }
-    //     }
-    // }
+        // mounted () {
+
+        //     try {
+        //         axios.get('http://imac-van-pieter.local:5000/activities/monthly').then(response => {
+        //                 this.totalData = {
+        //                     labels: response.data.map(x => x[1]),
+        //                     datasets: [{
+        //                         label: 'Activiteiten',
+        //                         borderColor: '#cc65fe',
+        //                         pointBackgroundColor: 'white',
+        //                         borderWidth: 2,
+        //                         pointBorderColor: '#cc65fe',
+        //                         backgroundColor: 'transparent',
+        //                         data: response.data.map(x => x[0])
+        //                     }]
+        //                 }
+        //         });
+        //     } catch(error){
+
+        //     }
+        // }
+
+        validate(): void {
+            // axios.get('http://imac-van-pieter.local:5000/activities/monthly').then(response => {
+            //     this.totalData = {
+            //                 labels: response.data.map(x => x[1]),
+            //                 datasets: [{
+            //                     label: 'Activiteiten',
+            //                     borderColor: '#cc65fe',
+            //                     pointBackgroundColor: 'white',
+            //                     borderWidth: 2,
+            //                     pointBorderColor: '#cc65fe',
+            //                     backgroundColor: 'transparent',
+            //                     data: response.data.map(x => x[0])
+            //                 }]
+            //             }
+            // }).catch(error => {
+            //     console.log(error);
+            // });
+        }
+    }
+
     
 </script>

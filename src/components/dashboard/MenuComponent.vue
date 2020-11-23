@@ -13,8 +13,10 @@
 </template>
 
 <script lang="ts">
+    import { Component, Vue } from 'vue-property-decorator'
 
-    export default {
+    @Component
+    export default class MenuComponent extends Vue {
        
     }
     

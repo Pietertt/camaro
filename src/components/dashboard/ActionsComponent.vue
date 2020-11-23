@@ -9,35 +9,11 @@
 </template>
 
 <script lang="ts">
+    import { Component, Vue } from 'vue-property-decorator'
 
-    // export default {
-    //      data () {
-    //         return {
-    //             deleteSensorLoading: false,
-    //             deleteActivitiyLoading: false
-    //         }
-    //     },
-    
-    //     methods: {
-            
-    //         deleteActivities(){
-    //             this.deleteActivitiyLoading = true;
-    //             axios.get('http://imac-van-pieter.local:5000/activities/delete/all').then(response => {
-    //                 if(response.data == 200){
-    //                     this.deleteActivitiyLoading = false;
-    //                 }
-    //             });
-    //         },
-
-    //         deleteSensorData(){
-    //             this.deleteSensorLoading = true;
-    //             axios.get('http://imac-van-pieter.local:5000/sensor/delete/all').then(response => {
-    //                 if(response.data == 200){
-    //                     this.deleteSensorLoading = false;
-    //                 }
-    //             });
-    //         }
-    //     }
-    // }
+    @Component
+    export default class ActionsComponent extends Vue {
+       
+    }
     
 </script>
