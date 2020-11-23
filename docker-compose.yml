@@ -3,13 +3,13 @@ version: '3.2'
 
 services:
 
-  laravel:
-    container_name: Backend
-    build: ./backend
+  vue:
+    container_name: frontend
+    build: ./frontend
     ports:
-      - "8000:80"
+      - "10000:8080"
     volumes:
-      - ./backend:/var/www/:cached 
+      - ./frontend:/var/www/html/:cached 
     networks:
       - default
 
