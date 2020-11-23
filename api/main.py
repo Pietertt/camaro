@@ -72,7 +72,7 @@ def get_activities_monthly():
 
         subarray = []
         subarray.append(x[1])
-        subarray.append(str(activity.get_day()))
+        subarray.append(activity.get_day())
 
         results.append(subarray)
 

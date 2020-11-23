@@ -48,11 +48,11 @@
 </template>
 
 <script lang="ts">
+
     import { Component, Vue } from 'vue-property-decorator';
     import axios from 'axios';
     import VueRouter, { Route } from 'vue-router';
     
-    import { LoginService } from '../services/LoginService';
     @Component
     export default class Login extends Vue {
         private username = '';
