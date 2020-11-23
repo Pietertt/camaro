@@ -1,26 +1,28 @@
 <template>
     <div class="uk-card uk-card-default uk-card-body">
         <h3 class="uk-card-title">Statistieken</h3>
-        <GChart
-            type="PieChart"
-            :data="chartData"
-            :options="chartOptions"
-            />
+        <line
+            :data="[86,114,106,106,107,111,133,221,783,2478]"
+            :labels="[1500,1600,1700,1750,1800,1850,1900,1950,1999,2050]"
+            :color="'#39f'"
+            :title="'Activiteiten'"
+        ></line>
     </div>
 </template>
 
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator'
     import axios from 'axios'
-    import { GChart } from "vue-google-charts";
+
+    import Line from '../charts/Line.vue'
 
     @Component({
         components: {
-            GChart
+            Line
         }
     })
 
-    export default class ActivitiesComponent extends Vue {
+    export default class StatisticsComponent extends Vue {
         
          private chartData = [['Task', 'Hours per Dy']];
 

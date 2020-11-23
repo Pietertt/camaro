@@ -1,7 +1,7 @@
 <template>
     <div class="uk-card uk-card-primary">
         <div class="uk-card-body">
-            <h3 class="uk-card-title">Statistieken</h3>
+            <h3 class="uk-card-title">Activiteiten</h3>
             <table class="uk-table uk-table-hover uk-table-divider uk-table-large">
                 <thead>
                     <tr>

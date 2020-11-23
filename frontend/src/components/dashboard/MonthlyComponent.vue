@@ -1,24 +1,17 @@
 <template>
     <div class="uk-card uk-card-default uk-card-body">
         <h3 class="uk-card-title">Deze maand</h3>
-          <GChart
+          <!-- <GChart
             type="AreaChart"
             :data="chartData"
             :options="chartOptions"
-            />
+            /> -->
     </div>
 </template>
 
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator'
-    import { GChart } from "vue-google-charts";
     import axios from 'axios';
-
-    @Component({
-        components: {
-            GChart
-        }
-    })
 
     export default class MonthlyComponent extends Vue {
 

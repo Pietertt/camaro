@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="uk-width-1-2">
-                   <monthly-component></monthly-component>
+                    <monthly-component></monthly-component>
                 </div>
 
                 <div class="uk-width-1-4">
@@ -24,6 +24,10 @@
 
                 <div class="uk-width-1-2">
                     <activities-component></activities-component>
+                </div>
+
+                <div class="uk-width-1-1">
+
                 </div>
                 
             </div>
@@ -41,6 +45,7 @@
     import MonthlyComponent from '@/components/dashboard/MonthlyComponent.vue';
     import ActivitiesComponent from '@/components/dashboard/ActivitiesComponent.vue';
     import StatisticsComponent from '@/components/dashboard/StatisticsComponent.vue';
+    import DeepLearningComponent from '@/components/dashboard/DeepLearningComponent.vue';
 
     @Component({
         components: {
@@ -48,7 +53,8 @@
             ActionsComponent,
             MonthlyComponent,
             ActivitiesComponent,
-            StatisticsComponent
+            StatisticsComponent,
+            DeepLearningComponent
         }
     })
     export default class Dashboard extends Vue {
