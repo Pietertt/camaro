@@ -80,6 +80,8 @@ services:
     container_name: keras
     build: ./keras
     command: "tail -f /dev/null"
+    ports:
+      - "7000:5000"
     volumes: 
       - ./keras:/model
 

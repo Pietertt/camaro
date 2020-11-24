@@ -68,6 +68,4 @@ class CustomModel(keras.Model):
         else:
             prediction = 'cat'
 
-        print(preds)
-
-        print(json.dumps(prediction))
+        return prediction
