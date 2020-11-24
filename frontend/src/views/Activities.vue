@@ -23,7 +23,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="d in recentData" :key="d.timestamp">
+                                    <tr v-for="d in recentData" :key="d.timestamp" v-on:click="navigate(d[0])">
                                         <td>{{ d[0] }}</td>
                                         <td>{{ d[1] }}</td>
                                         <td>{{ d[2] }}</td>
@@ -60,6 +60,10 @@
 
         mounted(): void {
             this.loadActivities();
+        }
+
+        private navigate(id: number){
+            this.$router.push("/activity/" + id);
         }
         
         loadActivities(): void {
