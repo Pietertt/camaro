@@ -1,15 +1,16 @@
+from serial_monitor import serial_monitor
 from current_time import current_time
 from database import database
-from camera import camera
-import picamera
+from pi_camera import pi_camera
 
 db = database()
 current_time = current_time()
-camera = camera()
+camera = pi_camera()
+sm = serial_monitor()
 
 timestamp = (str(current_time.get_time()))
-valid = 1
-userid = 1
+valid = str(sm.get_valid())
+userid = str(1)
 
 camera.take_photo()
 camera.take_video(20)

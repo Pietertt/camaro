@@ -3,7 +3,8 @@ import picamera
 import time
 import os
 
-class camera:
+class pi_camera:
+  name = '0'
   def __init__(self):
     global camera 
 
@@ -14,20 +15,21 @@ class camera:
     camera.hflip = True
   
   def take_video(self, recording_time):
-    global name
 
     self.recording_time = recording_time
-    name = str(current_time().get_time())
+    pi_camera.name = str(current_time().get_time())
     
     camera.start_preview()
     time.sleep(1)
-    camera.start_recording(name + ".h264")
+    camera.start_recording(pi_camera.name + ".h264")
     time.sleep(recording_time)
     camera.stop_recording()
     camera.stop_preview()
-    os.system("sudo mv " + name + ".h264 videos")
+    os.system("sudo mv " + pi_camera.name + ".h264 videos")
+    time.sleep(3)
 
   def take_photo(self):
-    camera.capture(name + ".jpg")   
-    os.system("sudo mv " + name + ".jpg images")
+    camera.capture(pi_camera.name + ".jpg")   
+    os.system("sudo mv " + pi_camera.name + ".jpg images")
+    time.sleep(1)
 

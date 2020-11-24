@@ -5,15 +5,14 @@ import time
 import os
 
 class database:
+    mycursor = None
+    db = None
     def __init__(self):
-        global db
-        global mycursor
-        
-        db = None
-        mycursor = None
+        pass
 
     def connect(self):
-        db = mysql.connector.connect(
+
+        self.db = mysql.connector.connect(
         host="imac-van-pieter",
         user="root",
         password="root",
@@ -21,7 +20,7 @@ class database:
         port="3306"
         )
 
-        self.mycursor = db.cursor()
+        self.mycursor = self.db.cursor()
     
     def insert(self, col_headers, col_values):
         col_headers = col_headers
@@ -29,8 +28,8 @@ class database:
 
         sql = "INSERT INTO `" + col_headers[0] + "` (`ID`, `" + col_headers[1] + "`, `" + col_headers[2] + "`, `" + col_headers[3] + "`) VALUES (NULL, %s, %s, %s)"
         val = (col_values[0], col_values[1], col_values[2])
-        mycursor.execute(sql, val)
-        db.commit()
+        self.mycursor.execute(sql, val)
+        self.db.commit()
         print(
             "Inserted into " + col_headers[0] + "\n" +
             col_headers[1] + col_values[0] + "\n" +
@@ -44,9 +43,9 @@ class database:
 
         sql = "DELETE FROM `" + col_headers[0] + "` (`ID`, `" + col_headers[1] + "`, `" + col_headers[2] + "`, `" + col_headers[3] + "`) VALUES (NULL, %s, %s, %s)"
         val = (col_values[0], col_values[1], col_values[2])
-        mycursor.execute(sql, val)
-        db.commit()
+        self.mycursor.execute(sql, val)
+        self.db.commit()
 
         os.system("sudo rm videos/" + col_values[0])
-        print(mycursor.rowcount, "record removed.")	
+        print(self.mycursor.rowcount, "record removed.")	
 
