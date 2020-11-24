@@ -25,6 +25,25 @@
 </div>
 <div class="uk-section uk-animation-fade uk-animation-slide-bottom">
     <div class="uk-container">
+        <div uk-grid>
+            <div class="uk-width-1-6@m"></div>
+
+            <div class="uk-width-1-3@m">
+                <img src="img/product.jpg" alt="">
+            </div>
+
+            <div class="uk-width-1-3@m">
+                <h1 class="uk-heading-small">CIT-1</h1>
+                <p>Welcome to the future of security technology. The best of each discipline bundled in one device.</p>
+                <p>Run by the newest technology to secure your precious posessions. We guarantee a pleasant experience while using our product.</p>
+                <h1 class="uk-heading-small">&euro; 149.99</h1>
+                <button class="uk-button uk-button-secondary">Buy now</button>
+            </div>
+
+            <div class="uk-width-1-6@m"></div>
+        </div>
+    </div>
+    <!-- <div class="uk-container">
         <article class="uk-article uk-margin-bottom">
             <h1 class="uk-article-title"><a class="uk-link-reset" href="">Heading</a></h1>
 
@@ -63,7 +82,7 @@
             </div>
         </div> 
 
-    </div>
+    </div> -->
 </div>
 
 <div class="uk-section">

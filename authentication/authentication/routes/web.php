@@ -1,5 +1,8 @@
 <?php
 
+use \App\Models\User;
+use \App\Http\Controllers\ValidationController;
+
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -13,6 +16,4 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return true;
-});
+$router->post('/valid', 'TestController@test');

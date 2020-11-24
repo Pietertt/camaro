@@ -68,11 +68,11 @@ def get_activities_monthly():
 
     for x in result:
         activity = Activity(1)
-        activity.set_day(str(x[0])[8:10])
+        activity.set_day(int(str(x[0])[8:10]))
 
         subarray = []
         subarray.append(x[1])
-        subarray.append(str(activity.get_day()))
+        subarray.append(activity.get_day())
 
         results.append(subarray)
 
@@ -92,7 +92,16 @@ def get_activities_percentage():
     cursor.execute("SELECT COUNT(activities.valid) FROM activities GROUP BY activities.valid;")
     result = cursor.fetchall()
 
-    return (json.dumps(result))
+    valid = result[0][0]
+    invalid = result[1][0]
+    total = valid + invalid
+
+    data = []
+    data.append(int((valid / total) * 100))
+    data.append(int((invalid / total) * 100))
+
+
+    return (json.dumps(data))
 
 
 @app.route("/sensor/delete/all")
