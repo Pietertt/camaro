@@ -1,5 +1,5 @@
 <template>
-    <canvas id="line" />
+    <canvas id="pie" />
 </template>
 
 <script lang="ts">
@@ -7,11 +7,11 @@
     import Chart from 'chart.js'
 
     @Component
-    export default class Line extends Vue {
+    export default class Pie extends Vue {
     @Prop({ default: [] }) readonly labels!: Array<string>
-    @Prop({ default: '' }) readonly color!: string
+    @Prop({ default: '#000000' }) readonly colors!: Array<string>
     @Prop({ default: [] }) readonly data!: Array<number>
-    @Prop({ default: ''}) readonly title!: string
+    @Prop({default: ''}) readonly title!: string
     @Prop({
         default: () => {
             return Chart.defaults.line
@@ -25,17 +25,18 @@
     }
 
     createChart() {
-        const canvas = document.getElementById('line') as HTMLCanvasElement
+        const canvas = document.getElementById('pie') as HTMLCanvasElement
 
         new Chart(canvas, {
-            type: 'line',
+            type: 'pie',
             data: {
                 labels: this.labels,
                 datasets: [{ 
                     data: this.data,
                     label: this.title,
-                    borderColor: this.color,
-                    fill: false
+                    fill: false,
+                    borderColor: this.colors,
+                    backgroundColor: this.colors
                 }]
             },
             options: {

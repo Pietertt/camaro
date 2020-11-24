@@ -68,7 +68,7 @@ def get_activities_monthly():
 
     for x in result:
         activity = Activity(1)
-        activity.set_day(str(x[0])[8:10])
+        activity.set_day(int(str(x[0])[8:10]))
 
         subarray = []
         subarray.append(x[1])

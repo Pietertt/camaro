@@ -33,14 +33,13 @@
         private chartData = [];
 
         mounted(): void {
-            this.validate();
+            setTimeout(this.validate, 2000)
         }
 
         validate(): void {
           
             axios.get('http://imac-van-pieter.local:5000/activities/recent').then(response => {
                 this.chartData = response.data;
-                console.log(this.chartData);
 
             }).catch(error => {
                 console.log(error);
