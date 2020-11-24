@@ -1,5 +1,5 @@
 <template>
-    <div class="uk-card uk-card-primary">
+    <div class="uk-card uk-card-secondary">
         <div class="uk-card-body">
             <h3 class="uk-card-title">Deep learning</h3>
            

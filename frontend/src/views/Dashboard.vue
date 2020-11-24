@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="uk-width-1-1">
-
+                    <deep-learning-component></deep-learning-component>
                 </div>
                 
             </div>

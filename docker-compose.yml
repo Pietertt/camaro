@@ -76,6 +76,13 @@ services:
     networks:
       - default
 
+  keras:
+    container_name: keras
+    build: ./keras
+    command: "tail -f /dev/null"
+    volumes: 
+      - ./keras:/model
+
 networks: 
   default:
 
