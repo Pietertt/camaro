@@ -12,5 +12,5 @@ from CustomModel import CustomModel
 
 model = CustomModel()
 model.define_model()
-model.train()
-#print(model.predict('data/validation/cats/cat.4030.jpg'))
+#model.train()
+print(model.predict('data/pp-3.jpg'))

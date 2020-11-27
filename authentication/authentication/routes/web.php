@@ -16,4 +16,4 @@ use \App\Http\Controllers\ValidationController;
 |
 */
 
-$router->post('/valid', 'TestController@test');
+$router->post('/valid', 'AuthenticationController@verify_user');

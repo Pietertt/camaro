@@ -52,6 +52,8 @@
     import { Component, Vue } from 'vue-property-decorator';
     import axios from 'axios';
     import VueRouter, { Route } from 'vue-router';
+
+    import LoginService from '../services/LoginService';
     
     @Component
     export default class Login extends Vue {
@@ -59,19 +61,10 @@
         private password = '';
         private loading = false;
       
-        validate(): void {
+        private validate(): void {
             this.loading = true;
-            axios.post('http://imac-van-pieter.local:4000/valid', {
-                username: this.username, 
-                password: this.password}
-            ).then(response => {
-                if(response.status == 200){
-                    this.loading = false;
-                    this.$router.push('/dashboard');
-                }
-            }).catch(error => {
-                this.loading = false;
-            });
+            const test = LoginService.authenticateUser(this.username, this.password);
+            console.log(test);
         }
     }
     
