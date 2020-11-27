@@ -63,8 +63,13 @@
       
         private validate(): void {
             this.loading = true;
-            const test = LoginService.authenticateUser(this.username, this.password);
-            console.log(test);
+            LoginService.authenticateUser(this.username, this.password).then(response => {
+                if(response.status === 200){
+                    this.$router.push('/dashboard');
+                } else {
+                    console.log("Wrong");
+                }
+            });
         }
     }
     
