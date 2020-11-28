@@ -6,7 +6,7 @@
                 <li><router-link to="/dashboard">Dashboard</router-link></li>
                 <li>Profiel</li>
                 <li><router-link to="/activities">Activiteiten</router-link></li>
-                <li><router-link to="/">Uitloggen</router-link></li>
+                <li><router-link to="/logout">Uitloggen</router-link></li>
             </ul>
         </div>
     </div>

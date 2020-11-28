@@ -11,34 +11,43 @@ import LoginService from '../services/LoginService';
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
-  {
-    path: '/',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: Dashboard,
-    beforeEnter: (to, from, next) => {
-        if(LoginService.isUserLoggedIn()){
-            next();
-        } else {
-            console.log();
-            next({ name: 'Login' });
+    {
+        path: '/',
+        name: 'Login',
+        component: Login
+    },
+    {
+        path: '/logout',
+        name: 'Logout',
+        component: Login,
+        beforeEnter (to, from, next) {
+            LoginService.logoutUser();
+            next({name: 'Login'});
         }
+    },
+    {
+        path: '/dashboard',
+        name: 'Dashboard',
+        component: Dashboard,
+        beforeEnter: (to, from, next) => {
+            if(LoginService.isUserLoggedIn()){
+                next();
+            } else {
+                console.log();
+                next({name: 'Login'});
+            }
+        }
+    },
+    {
+        path: '/activities',
+        name: 'Activities',
+        component: Activities
+    },
+    {
+        path: '/activity/:id',
+        name: 'Activity',
+        component: Activity
     }
-  },
-  {
-    path: '/activities',
-    name: 'Activities',
-    component: Activities
-  },
-  {
-    path: '/activity/:id',
-    name: 'Activity',
-    component: Activity
-  }
 ]
 
 const router = new VueRouter({

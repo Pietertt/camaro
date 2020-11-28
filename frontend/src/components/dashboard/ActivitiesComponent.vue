@@ -33,7 +33,7 @@
         private chartData = [];
 
         mounted(): void {
-            setTimeout(this.validate, 2000)
+            setTimeout(this.validate, 250)
         }
 
         validate(): void {

@@ -2,7 +2,7 @@
     <div class="uk-section uk-section-muted">
         <div class="uk-container">
 
-            <h3>Welkom, Pieter Boersma</h3>
+            <h3>Welkom, {{username}}</h3>
 
             <div class="uk-grid-match" uk-grid>
 
@@ -47,6 +47,9 @@
     import StatisticsComponent from '@/components/dashboard/StatisticsComponent.vue';
     import DeepLearningComponent from '@/components/dashboard/DeepLearningComponent.vue';
 
+    import LoginService from '../services/LoginService';
+import Login from './Login.vue';
+
     @Component({
         components: {
             MenuComponent,
@@ -58,7 +61,7 @@
         }
     })
     export default class Dashboard extends Vue {
-        
+        private username: string = LoginService.getUserData().username;
     }
     
 </script>

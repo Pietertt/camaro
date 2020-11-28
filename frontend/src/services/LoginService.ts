@@ -1,3 +1,4 @@
+import { User } from '@/models/User';
 import axios, { AxiosResponse } from 'axios';
 
 import DataService from '../services/DataService';
@@ -11,11 +12,24 @@ export default class LoginService {
         });
     }
 
+    public static logoutUser(): void {
+        DataService.removeData();
+    }
+
     public static isUserLoggedIn(): boolean {
-        if(DataService.getUserData()){
+        if(DataService.getUserData() !== null){
             return true;
         } else {
             return false;
         }
+    }
+
+    public static getUserData(): User {
+        const user: User = {
+            id: JSON.parse(DataService.getUserData()).id,
+            username: JSON.parse(DataService.getUserData()).username
+        }
+        
+        return user;
     }
 }

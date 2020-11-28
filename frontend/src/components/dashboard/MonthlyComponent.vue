@@ -1,7 +1,7 @@
 <template>
     <div class="uk-card uk-card-default uk-card-body">
         <h3 class="uk-card-title">Deze maand</h3>
-        <Doughnut
+        <Doughnut v-if="loaded"
             :data="this.data"
             :labels="this.labels"
             :color="['#1E87F0']"
@@ -25,9 +25,10 @@
     export default class MonthlyComponent extends Vue {
         private labels: number[] = [];
         private data: number[] = [];
+        private loaded = false;
 
         mounted(): void {
-            this.validate();
+            setTimeout(this.validate, 150);
         }
 
         validate(): void {
@@ -37,6 +38,7 @@
                     this.data.push(response.data[i][0]);
                     this.labels.push(response.data[i][1]);
                 }
+                this.loaded = true;
             });
         }
     }
