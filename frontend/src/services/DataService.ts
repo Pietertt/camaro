@@ -6,14 +6,19 @@ export default class DataService {
         localStorage.setItem('user', JSON.stringify(user));
     }
 
-    public static getUserData(): boolean {
+    public static removeData(): void {
+        localStorage.removeItem('user');
+    }
+
+    public static getUserData(): string {
         const data = localStorage.getItem('user');
-        if(data){
-            return true;
+        if(data !== null){
+            return data;
         } else {
-            return false;
+            return '';
         }
     }
+
 
 
 }
