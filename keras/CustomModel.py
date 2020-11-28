@@ -48,7 +48,7 @@ class CustomModel(keras.Model):
         self.model = model
 
     def train(self):
-        self.model.fit_generator(self.train_generator, steps_per_epoch=400, epochs=50, validation_data=self.validation_generator, validation_steps=800)
+        self.model.fit_generator(self.train_generator, steps_per_epoch=200, epochs=50, validation_data=self.validation_generator, validation_steps=800)
         self.model.save('catndogs')  # always save your weights after training or during training 
 
     def predict(self, file):

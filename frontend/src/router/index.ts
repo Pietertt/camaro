@@ -6,6 +6,8 @@ import Dashboard from '../views/Dashboard.vue'
 import Activities from '../views/Activities.vue'
 import Activity from '../views/Activity.vue'
 
+import LoginService from '../services/LoginService';
+
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
@@ -17,7 +19,15 @@ const routes: Array<RouteConfig> = [
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: Dashboard
+    component: Dashboard,
+    beforeEnter: (to, from, next) => {
+        if(LoginService.isUserLoggedIn()){
+            next();
+        } else {
+            console.log();
+            next({ name: 'Login' });
+        }
+    }
   },
   {
     path: '/activities',

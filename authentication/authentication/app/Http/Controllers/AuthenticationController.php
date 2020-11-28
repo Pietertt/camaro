@@ -15,7 +15,7 @@ class AuthenticationController extends Controller {
         $user = User::where('username', $username)->where('password', $password)->get();
         
         if(count($user) == 1){
-            return response("Success", 200);
+            return response(json_encode($user[0]), 200);
         } else {
             return response("Failure", 403);
         }

@@ -54,6 +54,8 @@
     import VueRouter, { Route } from 'vue-router';
 
     import LoginService from '../services/LoginService';
+    import DataService from '../services/DataService';
+    import { User } from '../models/User';
     
     @Component
     export default class Login extends Vue {
@@ -67,6 +69,13 @@
                 LoginService.authenticateUser(this.username, this.password).then(response => {
                     if(response.status === 200){
                         this.loading = false;
+                        
+                        const user: User = {
+                            id: response.data.id, 
+                            username: response.data.username 
+                        };
+                        
+                        DataService.setData(user);
                         this.$router.push("/dashboard");
                     } 
                 });
