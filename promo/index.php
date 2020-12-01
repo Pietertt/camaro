@@ -76,7 +76,8 @@
                             </div>
                             <div class="uk-card-body">
                                 <h3 class="uk-card-title">Raspberry Pi - Camera module</h3>
-                                <p>The camera of the Raspberry Pi gives us the quality we need with the usability that we want.</p>
+                                <p>Added the Raspberry Pi camera module. This camera is used to take photos and videos so the user can see what activities take place at their house. <br><br>
+                            </p>
                             </div>
                         </div>
                     </li>
@@ -87,7 +88,9 @@
                             </div>
                             <div class="uk-card-body">
                                 <h3 class="uk-card-title">Arduino UNO R3</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                                <p>Added the Arduino UNO R3. With the Arduino we give ourselves the oppurtunity to read analog and digital sensors. With this functionality the security 
+                                    system can be triggered. <br><br>
+                                </p>
                             </div>
                         </div>
                     </li>
@@ -98,7 +101,9 @@
                             </div>
                             <div class="uk-card-body">
                                 <h3 class="uk-card-title">Sensors</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                                <p>Added some sensors. Currenty a distance sensor and LDR have been added. The distance sensor is used to trigger the security system. The LDR is used to 
+                                    give the user some trivial information about the light intensity.
+                                </p>
                             </div>
                         </div>
                     </li>
@@ -109,7 +114,82 @@
                             </div>
                             <div class="uk-card-body">
                                 <h3 class="uk-card-title">Dashboard</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                                <p>The dashboard is added. The dashboard gives the user insight in the security system. This is the place where the user can see what activities there 
+                                    have been and when. The dashboard also provides sensor information.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+            </div>
+
+            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+
+        </div>
+    </div>
+</div>
+
+<div class="uk-section uk-background-primary">
+    <div class="uk-container ">
+    <span class="uk-label uk-margin-bottom uk-background-secondary">Iteration #2</span>
+        <div uk-slider="center: true">
+
+            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+
+                <ul class="uk-slider-items uk-child-width-1-2@s uk-grid">
+                    <li>
+                        <div class="uk-card uk-card-default">
+                            <div class="uk-card-media-top">
+                                <img src="img/product-it2.jpg" alt="">
+                            </div>
+                            <div class="uk-card-body">
+                                <h3 class="uk-card-title">PIR sensor</h3>
+                                <p>Added the PIR sensor. The PIR sensor is used to validate the activities even more. The system now added a restriction to the recording of the security 
+                                    camera. Now the system has to also detect an infrared signal before the camera takes a video.
+                            </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-card uk-card-default">
+                            <div class="uk-card-media-top">
+                                <img src="img/deep-learning.jpg" alt="">
+                            </div>
+                            <div class="uk-card-body">
+                                <h3 class="uk-card-title">Deep Learning</h3>
+                                <p>Started deep learning development. Deep learning will be used for recognizing human beings. This prevents the system from recording unnecessary events,
+                                    like the passing of a dog. <br><br>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-card uk-card-default">
+                            <div class="uk-card-media-top">
+                                <img src="img/product-it2.jpg" alt="">
+                            </div>
+                            <div class="uk-card-body">
+                                <h3 class="uk-card-title">Sensors</h3>
+                                <p>Added some sensors. Currenty a distance sensor and LDR have been added. The distance sensor is used to trigger the security system. The LDR is used to 
+                                    give the user some trivial information about the light intensity.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="uk-card uk-card-default">
+                            <div class="uk-card-media-top">
+                                <img src="img/product-it2.jpg" alt="">
+                            </div>
+                            <div class="uk-card-body">
+                                <h3 class="uk-card-title">Dashboard</h3>
+                                <p>The dashboard is added. The dashboard gives the user insight in the security system. This is the place where the user can see what activities there 
+                                    have been and when. The dashboard also provides sensor information.
+                                </p>
                             </div>
                         </div>
                     </li>
