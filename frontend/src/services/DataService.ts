@@ -14,9 +14,8 @@ export default class DataService {
         const data = localStorage.getItem('user');
         if(data !== null){
             return data;
-        } else {
-            return '';
-        }
+        } 
+        return '';
     }
 
 

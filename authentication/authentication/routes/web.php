@@ -17,3 +17,4 @@ use \App\Http\Controllers\ValidationController;
 */
 
 $router->post('/valid', 'AuthenticationController@verify_user');
+$router->post('/valid/token', 'AuthenticationController@verify_token');

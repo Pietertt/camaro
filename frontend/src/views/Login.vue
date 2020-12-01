@@ -78,7 +78,11 @@
                         };
                         
                         DataService.setData(user);
-                        this.$router.push("/dashboard");
+                        LoginService.getUserToken(user.id).then(response => {
+                            if(response.data === LoginService.getUserData().token){
+                                this.$router.push("/dashboard");
+                            }
+                        });
                     } else {
                         this.loading = false;
                         UIkit.notification({message: "<span uk-icon='icon: trash'></span> Probleem met het inloggen", pos: 'top-left', status: 'danger'});

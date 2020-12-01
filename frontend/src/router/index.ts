@@ -6,6 +6,8 @@ import Dashboard from '../views/Dashboard.vue'
 import Activities from '../views/Activities.vue'
 import Activity from '../views/Activity.vue'
 
+import {User} from '../models/User';
+
 import LoginService from '../services/LoginService';
 
 Vue.use(VueRouter)
@@ -30,12 +32,14 @@ const routes: Array<RouteConfig> = [
         name: 'Dashboard',
         component: Dashboard,
         beforeEnter: (to, from, next) => {
-            if(LoginService.isUserLoggedIn()){
-                next();
-            } else {
-                console.log();
-                next({name: 'Login'});
-            }
+            const user: User = LoginService.getUserData();
+            LoginService.getUserToken(user.id).then(response => {
+                if(response.data === LoginService.getUserData().token){
+                    next();
+                } else {
+                    next({name: 'Login'});
+                }
+            });
         }
     },
     {

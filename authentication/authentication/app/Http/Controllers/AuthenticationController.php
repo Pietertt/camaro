@@ -25,5 +25,13 @@ class AuthenticationController extends Controller {
             return response("Error", 403);
         }
     }
+
+    public function verify_token(Request $request){
+        $id = $request->input('id');
+
+        $user = User::where('id', $id)->first();
+
+        return response(json_encode($user->token), 200);
+    }
     
 }

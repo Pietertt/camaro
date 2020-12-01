@@ -14,16 +14,16 @@ export default class LoginService {
         });
     }
 
-    public static logoutUser(): void {
-        DataService.removeData();
+    public static async getUserToken(id: number): Promise<AxiosResponse<any>> {
+        return await axios.post('http://imac-van-pieter.local:4000/valid/token', {
+            id: id
+        }).catch(error => {
+            return error;
+        });
     }
 
-    public static isUserLoggedIn(): boolean {
-        if(DataService.getUserData() !== null){
-            return true;
-        } else {
-            return false;
-        }
+    public static logoutUser(): void {
+        DataService.removeData();
     }
 
     public static getUserData(): User {
