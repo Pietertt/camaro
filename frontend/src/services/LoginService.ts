@@ -29,7 +29,8 @@ export default class LoginService {
     public static getUserData(): User {
         const user: User = {
             id: JSON.parse(DataService.getUserData()).id,
-            username: JSON.parse(DataService.getUserData()).username
+            username: JSON.parse(DataService.getUserData()).username,
+            token: JSON.parse(DataService.getUserData()).token
         }
         
         return user;

@@ -73,7 +73,8 @@
                         
                         const user: User = {
                             id: response.data.id, 
-                            username: response.data.username 
+                            username: response.data.username,
+                            token: response.data.token
                         };
                         
                         DataService.setData(user);
