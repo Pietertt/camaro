@@ -9,6 +9,8 @@ export default class LoginService {
         return await axios.post('http://imac-van-pieter.local:4000/valid', {
             username: username, 
             password: password
+        }).catch(error => {
+            return error;
         });
     }
 

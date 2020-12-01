@@ -78,11 +78,11 @@
                         
                         DataService.setData(user);
                         this.$router.push("/dashboard");
-                    } 
+                    } else {
+                        this.loading = false;
+                        UIkit.notification({message: "<span uk-icon='icon: trash'></span> Probleem met het inloggen", pos: 'top-left', status: 'danger'});
+                    }
                 });
-            } catch(error) {
-                this.loading = false;
-                UIkit.notification({message: error, pos: 'top-left', status: 'danger'});
             } finally {
                 this.loading = false;
             }
