@@ -52,6 +52,7 @@
     import { Component, Vue } from 'vue-property-decorator';
     import axios from 'axios';
     import VueRouter, { Route } from 'vue-router';
+    import UIkit from 'uikit';
 
     import LoginService from '../services/LoginService';
     import DataService from '../services/DataService';
@@ -79,6 +80,9 @@
                         this.$router.push("/dashboard");
                     } 
                 });
+            } catch(error) {
+                this.loading = false;
+                UIkit.notification({message: error, pos: 'top-left', status: 'danger'});
             } finally {
                 this.loading = false;
             }
