@@ -68,7 +68,7 @@
         private username: string = LoginService.getUserData().username;
         private recentData = [];
         private currentId = 83;
-        private image = 20201201062345;
+        private image = String(20201201062345);
         private imagePath = '/images/' + String(this.image) + '.jpg';
         private route = "/activity/" + String(this.currentId);
 
@@ -78,7 +78,6 @@
 
         private setId(id: number){
             this.route = "/activity/" + String(id);
-            
         }
 
         private navigate(){
@@ -86,6 +85,7 @@
         }
         
         private setFootage(datum: string){
+            this.image = String(datum);
             this.imagePath = '/images/' + String(datum) + '.jpg';
             // alert(this.path);
         }
