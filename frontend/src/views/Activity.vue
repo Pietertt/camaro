@@ -4,9 +4,13 @@
             <div class="uk-card uk-card-secondary">
                 <div class="uk-card-body">
                     <h3 class="uk-card-title">Activiteit {{$route.params.id}}</h3>
-                
+
                 </div>
             </div>
+            
+            <div class="uk-card uk-card-secondary">
+            
+            </
         </div>
     </div>
 </template>
