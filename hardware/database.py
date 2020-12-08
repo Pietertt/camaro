@@ -23,9 +23,6 @@ class database:
         self.mycursor = self.db.cursor()
     
     def insert(self, col_headers, col_values):
-        col_headers = col_headers
-        col_values = col_values
-
         sql = "INSERT INTO `" + col_headers[0] + "` (`ID`, `" + col_headers[1] + "`, `" + col_headers[2] + "`, `" + col_headers[3] + "`) VALUES (NULL, %s, %s, %s)"
         val = (col_values[0], col_values[1], col_values[2])
         self.mycursor.execute(sql, val)
@@ -38,9 +35,6 @@ class database:
         )   
 
     def delete(self, col_headers, col_values):
-        col_headers = col_headers
-        col_values = col_values
-
         sql = "DELETE FROM `" + col_headers[0] + "` (`ID`, `" + col_headers[1] + "`, `" + col_headers[2] + "`, `" + col_headers[3] + "`) VALUES (NULL, %s, %s, %s)"
         val = (col_values[0], col_values[1], col_values[2])
         self.mycursor.execute(sql, val)
