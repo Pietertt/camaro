@@ -2,6 +2,8 @@ keras
 tensorflow
 flask
 flask_cors
-gevent
 pillow
-requests
+numpy
+pandas
+matplotlib
+sklearn

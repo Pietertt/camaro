@@ -67,10 +67,10 @@
     export default class Activities extends Vue {
         private username: string = LoginService.getUserData().username;
         private recentData = [];
-        private currentId = 83;
-        private image = String(20201201062345);
+        private image = String(this.recentData[1]);
         private imagePath = '/images/' + String(this.image) + '.jpg';
-        private route = "/activity/" + String(this.currentId);
+        private route = "";
+        private loaded = false;
 
         mounted(): void {
             this.loadActivities();
@@ -91,10 +91,10 @@
         }
 
 
-
         loadActivities(): void {
             axios.get('http://imac-van-pieter.local:5000/activities/all').then(response => {
                 this.recentData = response.data;
+                this.image = String()
             });
         }
     }

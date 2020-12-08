@@ -1,24 +1,29 @@
 <template>
-    <div class="uk-section uk-section-muted">
-        <h1>{{ $route.params.id }}</h1>
+    <div class="uk-section uk-section-default">
+        <div class="uk-container">
 
-        <video controls>
-            <source v-if="loaded" v-bind:src=videoSource>
-        </video>
+            <div class="uk-card uk-card-primary uk-card-body uk-margin-bottom">
+                <h3 class="uk-card-title">{{ $route.params.id }}</h3>
+            </div>
+
+            <div class="uk-card uk-card-secondary uk-card-body">
+                <video controls class="uk-align-center">
+                    <source v-if="loaded" v-bind:src=videoSource>
+                </video>
+            </div>
+
+            <div class="uk-card uk-card-default uk-card-body">
+                <p>This security footage was recorded on {{recordedTime}}.</p>
+            </div>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
     import axios from 'axios';
-    import VueRouter, { Route } from 'vue-router';
     
     import MenuComponent from '@/components/dashboard/MenuComponent.vue';
-    import ActionsComponent from '@/components/dashboard/ActionsComponent.vue';
-    import MonthlyComponent from '@/components/dashboard/MonthlyComponent.vue';
-    import ActivitiesComponent from '@/components/dashboard/ActivitiesComponent.vue';
-    import StatisticsComponent from '@/components/dashboard/StatisticsComponent.vue';
-    import LoginService from '../services/LoginService';
 
     @Component({
         components: {
@@ -28,6 +33,7 @@
     export default class Activities extends Vue {
         private recentData = [];
         private videoSource = '';
+        private recordedTime;
         private loaded = false;
 
         mounted(): void {
@@ -47,12 +53,15 @@
             for (const id of this.recentData){
                 console.log(id[0])
                 if (id[0] == currentId){
-                    console.log('got m!');
-                    //alert('you currently have ' + id[1] + '.mp4 selected')
                     this.videoSource = 'videos/' + String(id[1]) + '.mp4';
+                    this.filterDate(String(id[1]));
                     this.loaded = true;
                 }
             }
+        }
+
+        filterDate(date: string){
+            this.recordedTime = date.substring(6,8) + "-" + date.substring(4,6) + "-" + date.substring(0,4) + " at " + date.substring(8,10) + ":" + date.substring(10,12) + ":" + date.substring(12,14);
         }
     }
     
