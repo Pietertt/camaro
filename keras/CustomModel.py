@@ -98,6 +98,30 @@ class CustomModel(keras.Model):
 
         self.model.save("testenen.h5")
 
+    def predict(self):
+        model = keras.models.load_model("testenen.h5")
+        
+        for x in range(4001, 4100):
+            img = image.load_img('data/validation/dogs/dog.' + str(x) + '.jpg', target_size=(150, 150))
+            x = image.img_to_array(img)
+            x = np.expand_dims(x, axis=0)
+            x = preprocess_input(x)
+
+            predict = model.predict(x)
+
+            print(predict)
+
+        for x in range(4001, 4100):
+            img = image.load_img('data/validation/cats/cat.' + str(x) + '.jpg', target_size=(150, 150))
+            x = image.img_to_array(img)
+            x = np.expand_dims(x, axis=0)
+            x = preprocess_input(x)
+
+            predict = model.predict(x)
+
+            print(predict)
+
+
     #     batch_size = 16
 
     #     train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)

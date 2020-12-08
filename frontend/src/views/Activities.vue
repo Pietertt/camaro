@@ -67,13 +67,15 @@
     export default class Activities extends Vue {
         private username: string = LoginService.getUserData().username;
         private recentData = [];
-        private image = String(this.recentData[1]);
-        private imagePath = '/images/' + String(this.image) + '.jpg';
-        private route = "";
+        private initId = '';
+        private image = '';
+        private imagePath = '';
+        private route = '';
         private loaded = false;
 
         mounted(): void {
             this.loadActivities();
+            setTimeout(function(){this.init()}.bind(this), 500);
         }
 
         private setId(id: number){
@@ -82,6 +84,13 @@
 
         private navigate(){
             this.$router.push(this.route);
+        }
+
+        private init(){
+            this.image = String(this.recentData[0][1]) + '.jpg';
+            this.imagePath = '/images/' + this.image;
+            this.initId = String(this.recentData[0][0]);
+            this.route = '/activity/' + this.initId;
         }
         
         private setFootage(datum: string){
@@ -94,7 +103,7 @@
         loadActivities(): void {
             axios.get('http://imac-van-pieter.local:5000/activities/all').then(response => {
                 this.recentData = response.data;
-                this.image = String()
+                
             });
         }
     }

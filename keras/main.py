@@ -9,10 +9,11 @@ from CustomModel import CustomModel
 # @app.route("/network/predict")
 # def helloWorld():
 model = CustomModel()
-model.define()
-model.summary()
-model.prepare()
-model.train()
+#model.define()
+#model.summary()
+#model.prepare()
+#model.train()
+model.predict()
 
 # model.define_model()
 # model.train()
