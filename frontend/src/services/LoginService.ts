@@ -14,6 +14,16 @@ export default class LoginService {
         });
     }
 
+    public static async createUser(username: string, email: string, password: string){
+        return await axios.post('http://imac-van-pieter.local:4000/create', {
+            username: username, 
+            email: email,
+            password: password
+        }).catch(error => {
+            return error;
+        });
+    }
+
     public static async getUserToken(id: number): Promise<AxiosResponse<any>> {
         return await axios.post('http://imac-van-pieter.local:4000/valid/token', {
             id: id

@@ -26,6 +26,20 @@ class AuthenticationController extends Controller {
         }
     }
 
+    public function create_user(Request $request){
+        $username = $request->input('username');
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        $user = new User;
+        $user->username = $username;
+        $user->email = $email;
+        $user->password = $password;
+        $user->save();
+
+        return response("Success", 200);
+    }
+
     public function verify_token(Request $request){
         $id = $request->input('id');
 
