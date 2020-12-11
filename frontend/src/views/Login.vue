@@ -1,45 +1,99 @@
 
 <template>
-    <div class="uk-child-width-expand@s uk-text-center uk-padding-large" uk-height-viewport="expand" uk-grid>
+    <div class="uk-child-width-expand@s uk-text-center" uk-height-viewport="expand" uk-grid>
         <div>
 
         </div>
         <div>
-            <form v-on:submit.prevent="validate">
-                <fieldset class="uk-fieldset">
-                    <legend class="uk-legend">Inloggen</legend>
-                    
-                    <div class="uk-margin">
-                        <div class="uk-inline">
-                            <span class="uk-form-icon" uk-icon="icon: user"></span>
-                            <input 
-                                class="uk-input uk-form-width-large" 
-                                type="text" 
-                                placeholder="Gebruikersnaam"
-                                v-model="username">
+            <ul class="uk-tab" uk-switcher="animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium">
+                <li><a href="#" uk-switcher-item="0">Inloggen</a></li>
+                <li><a href="#" uk-switcher-item="1">Maak een account</a></li>
+            </ul>
+
+            <ul class="uk-switcher">
+                <form v-on:submit.prevent="validate">
+                    <fieldset class="uk-fieldset">
+                        <legend class="uk-legend">Inloggen</legend>
+                        
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                <input 
+                                    class="uk-input uk-form-width-large" 
+                                    type="text" 
+                                    placeholder="Gebruikersnaam"
+                                    v-model="username">
+                            </div>
                         </div>
-                    </div>
-                    <div class="uk-margin">
-                        <div class="uk-inline">
-                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                            <input 
-                                class="uk-input uk-form-width-large" 
-                                type="password" 
-                                name="password" 
-                                placeholder="Wachtwoord"
-                                v-model="password">
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                <input 
+                                    class="uk-input uk-form-width-large" 
+                                    type="password" 
+                                    name="password" 
+                                    placeholder="Wachtwoord"
+                                    v-model="password">
+                            </div>
                         </div>
-                    </div>
-                    <div class="uk-margin">
-                         <button class="uk-button uk-form-width-large uk-button-primary">
-                            <span v-if="!loading">Inloggen</span>
-                            <span v-if="loading">
-                                <div uk-spinner></div>
-                            </span>
-                        </button>
-                    </div>
-                </fieldset>
-            </form>
+                        <div class="uk-margin">
+                            <button class="uk-button uk-form-width-large uk-button-primary">
+                                <span v-if="!loading">Inloggen</span>
+                                <span v-if="loading">
+                                    <div uk-spinner></div>
+                                </span>
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+
+
+                <form v-on:submit.prevent="create">
+                    <fieldset class="uk-fieldset">
+                        <legend class="uk-legend">Maak een account</legend>
+                        
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                <input 
+                                    class="uk-input uk-form-width-large" 
+                                    type="text" 
+                                    placeholder="Gebruikersnaam"
+                                    v-model="username">
+                            </div>
+                        </div>
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                <input 
+                                    class="uk-input uk-form-width-large" 
+                                    type="text" 
+                                    placeholder="E-mailadres"
+                                    v-model="email">
+                            </div>
+                        </div>
+                        <div class="uk-margin">
+                            <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                <input 
+                                    class="uk-input uk-form-width-large" 
+                                    type="password" 
+                                    name="password" 
+                                    placeholder="Wachtwoord"
+                                    v-model="password">
+                            </div>
+                        </div>
+                        <div class="uk-margin">
+                            <button class="uk-button uk-form-width-large uk-button-primary">
+                                <span v-if="!loading">Maak een account</span>
+                                <span v-if="loading">
+                                    <div uk-spinner></div>
+                                </span>
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
+            </ul>
         </div>
         <div>
 
@@ -62,7 +116,14 @@
     export default class Login extends Vue {
         private username = '';
         private password = '';
+        private email = '';
         private loading = false;
+
+        private create(): void {
+            LoginService.createUser(this.username, this.email, this.password).then(response => {
+                console.log(response);
+            });
+        }
       
         private validate(): void {
             this.loading = true;
@@ -74,7 +135,8 @@
                         const user: User = {
                             id: response.data.id, 
                             username: response.data.username,
-                            token: response.data.token
+                            token: response.data.token,
+                            email: ''
                         };
                         
                         DataService.setData(user);

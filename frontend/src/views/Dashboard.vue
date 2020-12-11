@@ -1,35 +1,33 @@
 <template>
-    <div class="uk-section uk-section-muted">
-        <div class="uk-container">
+    <div class="uk-position-relative">
+        <div class="uk-position-top">
+            <menu-component></menu-component>
+        </div>
+        <div class="uk-section uk-section-muted">
+            <div class="uk-container">
 
-            <h3>Welkom, {{username}}</h3>
+                <h3>Welkom, {{username}}</h3>
 
-            <div class="uk-grid-match" uk-grid>
+                <div class="uk-grid-match" uk-grid>
 
-                <div class="uk-width-1-4">
-                    <menu-component></menu-component>
+
+                    <div class="uk-width-3-4">
+                        <monthly-component></monthly-component>
+                    </div>
+
+                    <div class="uk-width-1-4">
+                        <actions-component></actions-component>
+                    </div>
+
+                    <div class="uk-width-1-2">
+                        <statistics-component></statistics-component>
+                    </div>
+
+                    <div class="uk-width-1-2">
+                        <activities-component></activities-component>
+                    </div>
+
                 </div>
-
-                <div class="uk-width-1-2">
-                    <monthly-component></monthly-component>
-                </div>
-
-                <div class="uk-width-1-4">
-                    <actions-component></actions-component>
-                </div>
-
-                <div class="uk-width-1-2">
-                    <statistics-component></statistics-component>
-                </div>
-
-                <div class="uk-width-1-2">
-                    <activities-component></activities-component>
-                </div>
-
-                <div class="uk-width-1-1">
-                    <deep-learning-component></deep-learning-component>
-                </div>
-                
             </div>
         </div>
     </div>
@@ -45,7 +43,6 @@
     import MonthlyComponent from '@/components/dashboard/MonthlyComponent.vue';
     import ActivitiesComponent from '@/components/dashboard/ActivitiesComponent.vue';
     import StatisticsComponent from '@/components/dashboard/StatisticsComponent.vue';
-    import DeepLearningComponent from '@/components/dashboard/DeepLearningComponent.vue';
 
     import LoginService from '../services/LoginService';
 import Login from './Login.vue';
@@ -56,8 +53,7 @@ import Login from './Login.vue';
             ActionsComponent,
             MonthlyComponent,
             ActivitiesComponent,
-            StatisticsComponent,
-            DeepLearningComponent
+            StatisticsComponent
         }
     })
     export default class Dashboard extends Vue {

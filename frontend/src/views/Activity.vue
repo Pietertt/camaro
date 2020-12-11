@@ -42,23 +42,23 @@
         }
 
 
-        loadActivities(): void {
-            console.log('load activities function');
-            axios.get('http://localhost:5000/activities/all').then(response => {
-                this.recentData = response.data;
-            });
-        }
+        // loadActivities(): void {
+        //     console.log('load activities function');
+        //     axios.get('http://localhost:5000/activities/all').then(response => {
+        //         this.recentData = response.data;
+        //     });
+        // }
 
-        getName(currentId: string){
-            for (const id of this.recentData){
-                console.log(id[0])
-                if (id[0] == currentId){
-                    this.videoSource = 'videos/' + String(id[1]) + '.mp4';
-                    this.filterDate(String(id[1]));
-                    this.loaded = true;
-                }
-            }
-        }
+        // getName(currentId: string){
+        //     for (const id of this.recentData){
+        //         console.log(id[0])
+        //         if (id[0] == currentId){
+        //             this.videoSource = 'videos/' + String(id[1]) + '.mp4';
+        //             this.filterDate(String(id[1]));
+        //             this.loaded = true;
+        //         }
+        //     }
+        // }
 
         filterDate(date: string){
             this.recordedTime = date.substring(6,8) + "-" + date.substring(4,6) + "-" + date.substring(0,4) + " at " + date.substring(8,10) + ":" + date.substring(10,12) + ":" + date.substring(12,14);
