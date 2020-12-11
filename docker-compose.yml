@@ -4,8 +4,7 @@ services:
 
   frontend:
     container_name: frontend_1
-    tty: true
-    image: node:lts-alpine
+    build: ./frontend
     ports:
       - "10000:8080"
     volumes:
