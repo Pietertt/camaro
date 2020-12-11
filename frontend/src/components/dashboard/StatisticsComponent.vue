@@ -33,7 +33,7 @@
 
         validate(): void {
           
-            axios.get('http://imac-van-pieter.local:5000/activities/percentage').then(response => {
+            axios.get('http://localhost:5000/activities/percentage').then(response => {
                 this.data.push(response.data[0]);
                 this.data.push(response.data[1]);
                 this.loaded = true;
