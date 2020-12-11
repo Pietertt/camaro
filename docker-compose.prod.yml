@@ -1,0 +1,26 @@
+version: '3.2'
+services:
+  promo:
+    container_name: promo
+    build: ./promo
+    volumes:
+      - ./promo:/var/www/html/
+    ports:
+      - "3000:80"
+    networks:
+      - default
+
+  keras:
+    container_name: keras
+    image: python:3.6-stretch
+    command: "tail -f /dev/null"
+    ports:
+      - "7000:5000"
+    volumes: 
+      - ./keras:/app
+
+networks: 
+  default:
+
+volumes: 
+  database_volume:
