@@ -1,7 +1,7 @@
 FROM node:lts-alpine
 
-WORKDIR /var/www/html
+COPY . /var/www/html
 
-COPY . .
+WORKDIR /var/www/html
 
 CMD ["npm", "run", "serve"]

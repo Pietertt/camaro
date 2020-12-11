@@ -30,7 +30,7 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install mysqli pdo_mysql
 
 # Install yarn
-RUN npm -g install yarn
+#RUN npm -g install yarn
 
 # No idea what this does
 ENV APACHE_DOCUMENT_ROOT /var/www/authentication/public

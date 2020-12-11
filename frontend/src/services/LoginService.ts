@@ -9,6 +9,16 @@ export default class LoginService {
         return await axios.post('http://imac-van-pieter.local:4000/valid', {
             username: username, 
             password: password
+        }).catch(error => {
+            return error;
+        });
+    }
+
+    public static async getUserToken(id: number): Promise<AxiosResponse<any>> {
+        return await axios.post('http://imac-van-pieter.local:4000/valid/token', {
+            id: id
+        }).catch(error => {
+            return error;
         });
     }
 
@@ -16,18 +26,11 @@ export default class LoginService {
         DataService.removeData();
     }
 
-    public static isUserLoggedIn(): boolean {
-        if(DataService.getUserData() !== null){
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public static getUserData(): User {
         const user: User = {
             id: JSON.parse(DataService.getUserData()).id,
-            username: JSON.parse(DataService.getUserData()).username
+            username: JSON.parse(DataService.getUserData()).username,
+            token: JSON.parse(DataService.getUserData()).token
         }
         
         return user;

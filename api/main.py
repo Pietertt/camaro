@@ -23,7 +23,7 @@ CORS(app)
 
 @app.route("/activities/recent")
 def helloWorld():
-    cursor.execute("SELECT * FROM `activities` LIMIT 5")
+    cursor.execute("SELECT * FROM `activities` WHERE valid = 1 ORDER BY id DESC LIMIT 5")
     result = cursor.fetchall()
 
     results = []
@@ -36,7 +36,7 @@ def helloWorld():
 
 @app.route("/activities/all")
 def get_all_activities():
-    cursor.execute("SELECT * FROM `activities`")
+    cursor.execute("SELECT * FROM `activities` WHERE valid = 1 ORDER BY id DESC")
     result = cursor.fetchall()
 
     return json.dumps(result)

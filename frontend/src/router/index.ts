@@ -6,7 +6,10 @@ import Dashboard from '../views/Dashboard.vue'
 import Activities from '../views/Activities.vue'
 import Activity from '../views/Activity.vue'
 
+import {User} from '../models/User';
+
 import LoginService from '../services/LoginService';
+import DataService from '../services/DataService';
 
 Vue.use(VueRouter)
 
@@ -30,10 +33,17 @@ const routes: Array<RouteConfig> = [
         name: 'Dashboard',
         component: Dashboard,
         beforeEnter: (to, from, next) => {
-            if(LoginService.isUserLoggedIn()){
-                next();
+            if(DataService.getUserData() !== ''){
+                const user: User = LoginService.getUserData();
+
+                LoginService.getUserToken(user.id).then(response => {
+                    if(response.data === LoginService.getUserData().token){
+                        next();
+                    } else {
+                        next({name: 'Login'});
+                    }
+                });
             } else {
-                console.log();
                 next({name: 'Login'});
             }
         }
@@ -41,12 +51,42 @@ const routes: Array<RouteConfig> = [
     {
         path: '/activities',
         name: 'Activities',
-        component: Activities
+        component: Activities,
+        beforeEnter: (to, from, next) => {
+            if(DataService.getUserData() !== ''){
+                const user: User = LoginService.getUserData();
+
+                LoginService.getUserToken(user.id).then(response => {
+                    if(response.data === LoginService.getUserData().token){
+                        next();
+                    } else {
+                        next({name: 'Login'});
+                    }
+                });
+            } else {
+                next({name: 'Login'});
+            }
+        }
     },
     {
         path: '/activity/:id',
         name: 'Activity',
-        component: Activity
+        component: Activity,
+        beforeEnter: (to, from, next) => {
+            if(DataService.getUserData() !== ''){
+                const user: User = LoginService.getUserData();
+
+                LoginService.getUserToken(user.id).then(response => {
+                    if(response.data === LoginService.getUserData().token){
+                        next();
+                    } else {
+                        next({name: 'Login'});
+                    }
+                });
+            } else {
+                next({name: 'Login'});
+            }
+        }
     }
 ]
 

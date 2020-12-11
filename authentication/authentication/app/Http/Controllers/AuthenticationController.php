@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use \App\Models\User;
+use \App\Models\JWT;
 
 class AuthenticationController extends Controller {
 
@@ -12,13 +13,25 @@ class AuthenticationController extends Controller {
         $username = $request->input('username');
         $password = $request->input('password');
 
-        $user = User::where('username', $username)->where('password', $password)->get();
+        $user = User::where('username', $username)->where('password', $password)->first();
         
-        if(count($user) == 1){
-            return response(json_encode($user[0]), 200);
+        if($user !== null){
+            $jwt = new JWT();
+            $user->token = $jwt->get_token();
+            $user->save();
+            return response(json_encode($user), 200);
         } else {
-            return response("Failure", 403);
+            
+            return response("Error", 403);
         }
+    }
+
+    public function verify_token(Request $request){
+        $id = $request->input('id');
+
+        $user = User::where('id', $id)->first();
+
+        return response(json_encode($user->token), 200);
     }
     
 }

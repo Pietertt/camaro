@@ -1,12 +1,10 @@
-
 version: '3.2'
 
 services:
 
   frontend:
     container_name: frontend_1
-    tty: true
-    image: node:lts-alpine
+    build: ./frontend
     ports:
       - "10000:8080"
     volumes:
@@ -78,12 +76,12 @@ services:
 
   keras:
     container_name: keras
-    build: ./keras
+    image: python:3.6-stretch
     command: "tail -f /dev/null"
     ports:
       - "7000:5000"
     volumes: 
-      - ./keras:/model
+      - ./keras:/app
 
 networks: 
   default:

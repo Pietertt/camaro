@@ -52,6 +52,7 @@
     import { Component, Vue } from 'vue-property-decorator';
     import axios from 'axios';
     import VueRouter, { Route } from 'vue-router';
+    import UIkit from 'uikit';
 
     import LoginService from '../services/LoginService';
     import DataService from '../services/DataService';
@@ -72,12 +73,20 @@
                         
                         const user: User = {
                             id: response.data.id, 
-                            username: response.data.username 
+                            username: response.data.username,
+                            token: response.data.token
                         };
                         
                         DataService.setData(user);
-                        this.$router.push("/dashboard");
-                    } 
+                        LoginService.getUserToken(user.id).then(response => {
+                            if(response.data === LoginService.getUserData().token){
+                                this.$router.push("/dashboard");
+                            }
+                        });
+                    } else {
+                        this.loading = false;
+                        UIkit.notification({message: "<span uk-icon='icon: trash'></span> Probleem met het inloggen", pos: 'top-left', status: 'danger'});
+                    }
                 });
             } finally {
                 this.loading = false;
