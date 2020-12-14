@@ -4,7 +4,7 @@ services:
 
   frontend:
     container_name: frontend_1
-    build: ./frontend
+    image: pietertt/frontend:1.0
     ports:
       - "10000:8080"
     volumes:

@@ -44,7 +44,7 @@
 
         // loadActivities(): void {
         //     console.log('load activities function');
-        //     axios.get('http://localhost:5000/activities/all').then(response => {
+        //     axios.get('http://imac-van-pieter.local:5000/activities/all').then(response => {
         //         this.recentData = response.data;
         //     });
         // }
