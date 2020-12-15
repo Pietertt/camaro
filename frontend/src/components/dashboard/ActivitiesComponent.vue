@@ -38,7 +38,7 @@
 
         validate(): void {
           
-            axios.get('http://localhost:5000/activities/recent').then(response => {
+            axios.get('http://imac-van-pieter.local:5000/activities/recent').then(response => {
                 this.chartData = response.data;
 
             }).catch(error => {
