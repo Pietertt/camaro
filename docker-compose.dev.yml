@@ -45,7 +45,7 @@ services:
   
   api:
     container_name: api
-    build: ./api
+    image: pietertt/api:1.2
     volumes:
       - ./api:/api
     ports:
@@ -55,7 +55,7 @@ services:
 
   auth:
     container_name: auth
-    build: ./authentication
+    image: pietertt/authentication:1.0
     volumes:
       - ./authentication:/var/www/
       - ./authentication/php.ini:/usr/local/etc/php/php.ini
