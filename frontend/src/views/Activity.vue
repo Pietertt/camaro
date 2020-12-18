@@ -1,19 +1,24 @@
 <template>
-    <div class="uk-section uk-section-default">
-        <div class="uk-container">
+    <div class="uk-position-relative">
+        <div class="uk-position-top">
+            <menu-component></menu-component>
+        </div>
+        <div class="uk-section uk-section-default">
+            <div class="uk-container">
 
-            <div class="uk-card uk-card-primary uk-card-body uk-margin-bottom">
-                <h3 class="uk-card-title">{{ $route.params.id }}</h3>
-            </div>
+                <div class="uk-card uk-card-primary uk-card-body uk-margin-bottom">
+                    <h3 class="uk-card-title">{{ $route.params.id }}</h3>
+                </div>
 
-            <div class="uk-card uk-card-secondary uk-card-body">
-                <video controls class="uk-align-center">
-                    <source v-if="loaded" v-bind:src=videoSource>
-                </video>
-            </div>
+                <div class="uk-card uk-card-secondary uk-card-body">
+                    <video controls class="uk-align-center">
+                        <source v-if="loaded" v-bind:src=videoSource>
+                    </video>
+                </div>
 
-            <div class="uk-card uk-card-default uk-card-body">
-                <p>This security footage was recorded on {{recordedTime}}.</p>
+                <div class="uk-card uk-card-default uk-card-body">
+                    <p>This security footage was recorded on {{recordedTime}}.</p>
+                </div>
             </div>
         </div>
     </div>

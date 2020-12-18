@@ -1,44 +1,49 @@
 <template>
-    <div class="uk-section uk-section-muted">
-        <div class="uk-container">
+    <div class="uk-position-relative">
+        <div class="uk-position-top">
+            <menu-component></menu-component>
+        </div>
+        <div class="uk-section uk-section-muted">
+            <div class="uk-container">
 
-            <h3>Welkom, {{username}}</h3>
+                <h3>Welkom, {{username}}</h3>
 
-            <div class="uk-grid-match" uk-grid>
+                <div class="uk-grid-match" uk-grid>
 
-                <div class="uk-width-1-2">
-                    <div class="uk-card uk-card-primary">
-                        <div class="uk-card-body">
-                            <h3 class="uk-card-title">Statistieken</h3>
-                            <table class="uk-table uk-table-hover uk-table-divider uk-table-large">
-                                <thead>
-                                    <tr>
-                                        <th>Nummer</th>
-                                        <th>Datum</th>
-                                        <th>Validiteit</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- <tr v-for="d in recentData" :key="d.timestamp" v-on:click="navigate(d[0])"> -->
-                                    <tr v-for="d in recentData" :key="d.timestamp" v-on:click="setId(d[0]); setFootage(d[1])">
-                                        <td>{{ d[0] }}</td>
-                                        <td>{{ d[1] }}</td>
-                                        <td>{{ d[2] }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <div class="uk-width-1-2">
+                        <div class="uk-card uk-card-primary">
+                            <div class="uk-card-body">
+                                <h3 class="uk-card-title">Statistieken</h3>
+                                <table class="uk-table uk-table-hover uk-table-divider uk-table-large">
+                                    <thead>
+                                        <tr>
+                                            <th>Nummer</th>
+                                            <th>Datum</th>
+                                            <th>Validiteit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- <tr v-for="d in recentData" :key="d.timestamp" v-on:click="navigate(d[0])"> -->
+                                        <tr v-for="d in recentData" :key="d.timestamp" v-on:click="setId(d[0]); setFootage(d[1])">
+                                            <td>{{ d[0] }}</td>
+                                            <td>{{ d[1] }}</td>
+                                            <td>{{ d[2] }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="uk-width-1-2">
-                    <div class="uk-card uk-card-secondary">
-                        <div class="uk-card-body">
-                            <a v-on:click="navigate"><img v-bind:src=imagePath></a>
+                    <div class="uk-width-1-2">
+                        <div class="uk-card uk-card-secondary">
+                            <div class="uk-card-body">
+                                <a v-on:click="navigate"><img v-bind:src=imagePath></a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
     </div>
