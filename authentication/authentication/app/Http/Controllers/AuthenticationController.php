@@ -31,9 +31,16 @@ class AuthenticationController extends Controller {
         $email = $request->input('email');
         $password = $request->input('password');
 
+        if(empty($username)) return response("Error", 403);
+        if(empty($email)) return response("Error", 403);
+        if(empty($password)) return response("Error", 403);
+
+        if(User::where('email', $email)->where('username', $username)->first() !== null) return response("Error", 403);
+       
         $user = new User;
         $user->username = $username;
         $user->email = $email;
+        $user->token = "";
         $user->password = $password;
         $user->save();
 
