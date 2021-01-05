@@ -26,6 +26,17 @@
                             v-model="password">
                     </div>
                 </div>
+                 <div class="uk-margin" v-if="!status">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                        <input 
+                            class="uk-input uk-form-width-large" 
+                            type="email" 
+                            name="email" 
+                            placeholder="E-mailadres"
+                            v-model="email">
+                    </div>
+                </div>
                 <div class="uk-margin" v-if="status">
                     <button class="uk-button uk-form-width-large uk-button-primary">
                         <span v-if="!loading">Inloggen</span>
@@ -107,7 +118,14 @@
                     });
                 } else {
                     LoginService.createUser(this.username, this.email, this.password).then((response) => {
-                        console.log(response);
+                        if(response.status === 200){
+                            this.loading = false;
+                            this.status = true;
+                            UIkit.notification({message: "<span uk-icon='icon: comments'></span>Het maken van een account is gelukt", pos: 'top-left', status: 'success'});
+                        } else {
+                            this.loading = false;
+                            UIkit.notification({message: "<span uk-icon='icon: trash'></span> Probleem met het aanmaken van een account", pos: 'top-left', status: 'danger'});
+                        }
                     });
                 }
             } finally {
