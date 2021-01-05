@@ -89,7 +89,7 @@
                     }
                 });
             } finally {
-                this.loading = false;
+                console.log("Done");
             }
         }
         

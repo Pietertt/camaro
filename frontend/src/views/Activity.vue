@@ -35,7 +35,7 @@
             MenuComponent
         }
     })
-    export default class Activities extends Vue {
+    export default class Activity extends Vue {
         private recentData = [];
         private videoSource = '';
         private recordedTime;
