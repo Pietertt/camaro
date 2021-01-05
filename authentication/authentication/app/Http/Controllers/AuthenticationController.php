@@ -34,6 +34,7 @@ class AuthenticationController extends Controller {
         $user = new User;
         $user->username = $username;
         $user->email = $email;
+        $user->token = "";
         $user->password = $password;
         $user->save();
 
