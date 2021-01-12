@@ -1,5 +1,5 @@
 keras
-tensorflow==2.2
+tensorflow
 flask
 flask_cors
 pillow
@@ -7,4 +7,3 @@ numpy==1.19.5
 pandas
 matplotlib
 sklearn
-notebook
