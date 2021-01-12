@@ -3,7 +3,7 @@ tensorflow
 flask
 flask_cors
 pillow
-numpy
+numpy==1.19.5
 pandas
 matplotlib
 sklearn
