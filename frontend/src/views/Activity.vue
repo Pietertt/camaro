@@ -43,7 +43,7 @@
 
         mounted(): void {
             this.loadActivities();
-            setTimeout(function(){this.getName(this.$route.params.id)}.bind(this), 500);
+            this.getName(this.$route.params.id)        
         }
 
 
@@ -54,18 +54,19 @@
             });
         }
 
-        getName(currentId: string){
-            for (const id of this.recentData){
-                console.log(id[0])
-                if (id[0] == currentId){
-                    this.videoSource = 'videos/' + String(id[1]) + '.mp4';
-                    this.filterDate(String(id[1]));
-                    this.loaded = true;
+        getName(currentId: string): void {
+            setTimeout(() => {
+                for (const id of this.recentData){
+                    if (id[0] == currentId){
+                        this.videoSource = 'videos/' + String(id[1]) + '.mp4';
+                        this.filterDate(String(id[1]));
+                        this.loaded = true;
+                    }
                 }
-            }
+            }, 500);
         }
 
-        filterDate(date: string){
+        filterDate(date: string): void {
             this.recordedTime = date.substring(6,8) + "-" + date.substring(4,6) + "-" + date.substring(0,4) + " at " + date.substring(8,10) + ":" + date.substring(10,12) + ":" + date.substring(12,14);
         }
     }

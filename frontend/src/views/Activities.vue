@@ -55,13 +55,8 @@
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
     import axios from 'axios';
-    import VueRouter, { Route } from 'vue-router';
     
     import MenuComponent from '@/components/dashboard/MenuComponent.vue';
-    import ActionsComponent from '@/components/dashboard/ActionsComponent.vue';
-    import MonthlyComponent from '@/components/dashboard/MonthlyComponent.vue';
-    import ActivitiesComponent from '@/components/dashboard/ActivitiesComponent.vue';
-    import StatisticsComponent from '@/components/dashboard/StatisticsComponent.vue';
     import LoginService from '../services/LoginService';
 
     @Component({
@@ -80,7 +75,7 @@
 
         mounted(): void {
             this.loadActivities();
-            setTimeout(function(){this.init()}.bind(this), 500);
+            this.init();
         }
 
         private setId(id: number){
@@ -91,11 +86,13 @@
             this.$router.push(this.route);
         }
 
-        private init(){
-            this.image = String(this.recentData[0][1]) + '.jpg';
-            this.imagePath = '/images/' + this.image;
-            this.initId = String(this.recentData[0][0]);
-            this.route = '/activity/' + this.initId;
+        private init(): void {
+            setTimeout(() => {
+                this.image = String(this.recentData[0][1]) + '.jpg';
+                this.imagePath = '/images/' + this.image;
+                this.initId = String(this.recentData[0][0]);
+                this.route = '/activity/' + this.initId;
+            }, 500);
         }
         
         private setFootage(datum: string){

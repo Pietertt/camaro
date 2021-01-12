@@ -74,7 +74,7 @@
                                     type="password" 
                                     name="password" 
                                     placeholder="Wachtwoord"
-                                    v-model="password">
+                                    v-model="passwordCreate">
                             </div>
                         </div>
                         <div class="uk-margin">
@@ -104,8 +104,6 @@
 <script lang="ts">
 
     import { Component, Vue } from 'vue-property-decorator';
-    import axios from 'axios';
-    import VueRouter, { Route } from 'vue-router';
     import UIkit from 'uikit';
 
     import LoginService from '../services/LoginService';
