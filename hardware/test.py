@@ -1,9 +1,6 @@
-serial = "s10/x69"
+import os
 
-values = serial.split('/')
-
-distance = values[0].replace('s', '')
-ldr = values[1].replace('x', '')
-
-print('Distance: ' + distance + '\n' +
-        'LDR: ' + ldr)
+#os.system('ssh pieterboersma@imac-van-pieter mkdir -p /Users/pieterboersma/Desktop/camaro/frontend/public/data')
+# os.system('ssh pieterboersma@imac-van-pieter rm -rf /Users/pieterboersma/Desktop/camaro/frontend/public/data/videos/')
+# os.system('ssh pieterboersma@imac-van-pieter rm -rf /Users/pieterboersma/Desktop/camaro/frontend/public/data/images/')
+os.system('ssh pieterboersma@imac-van-pieter mkdir -p /Users/pieterboersma/Desktop/camaro/frontend/public/data/videos')

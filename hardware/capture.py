@@ -9,7 +9,7 @@ camera = pi_camera()
 sm = serial_monitor()
 
 timestamp = (str(current_time.get_time()))
-valid = str(sm.get_valid())
+valid = str(1)
 userid = str(1)
 
 camera.take_photo()
@@ -21,5 +21,5 @@ col_values = [timestamp, valid, userid]
 
 db.insert(col_headers, col_values)
 
-
+valid = str(0)
 
