@@ -3,8 +3,10 @@ import time
 
 class current_time:
     def __init__(self):
-        global time
-        time = datetime.datetime.now()
+        pass
+
+    def get_now(self):
+        return time.time()
 
     def get_time(self):
         return time.strftime("%Y%m%d%H%M%S")

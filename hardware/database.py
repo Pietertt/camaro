@@ -7,11 +7,11 @@ import os
 class database:
     mycursor = None
     db = None
+    active = False
     def __init__(self):
         pass
 
     def connect(self):
-
         self.db = mysql.connector.connect(
         host="imac-van-pieter",
         user="root",
@@ -19,7 +19,7 @@ class database:
         database="camaro",
         port="3306"
         )
-
+        
         self.mycursor = self.db.cursor()
     
     def insert(self, col_headers, col_values):
@@ -46,6 +46,7 @@ class database:
         self.mycursor.execute(sql, val)
         self.db.commit()
 
-        os.system("sudo rm videos/" + col_values[0])
-        print(self.mycursor.rowcount, "record removed.")	
+        print(self.mycursor.rowcount, "record removed.")
+
+    
 
