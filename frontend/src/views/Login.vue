@@ -13,7 +13,7 @@
                                     class="uk-input uk-form-width-large" 
                                     type="text" 
                                     placeholder="Gebruikersnaam"
-                                    v-model="username">
+                                    v-model="usernameLogin">
                             </div>
                         </div>
                         <div class="uk-margin">
@@ -24,13 +24,13 @@
                                     type="password" 
                                     name="password" 
                                     placeholder="Wachtwoord"
-                                    v-model="password">
+                                    v-model="passwordLogin">
                             </div>
                         </div>
                         <div class="uk-margin">
                             <button class="uk-button uk-form-width-large uk-button-primary">
-                                <span v-if="!loading">Inloggen</span>
-                                <span v-if="loading">
+                                <span v-if="!loadingLogin">Inloggen</span>
+                                <span v-if="loadingLogin">
                                     <div uk-spinner></div>
                                 </span>
                             </button>
@@ -53,7 +53,7 @@
                                     class="uk-input uk-form-width-large" 
                                     type="text" 
                                     placeholder="Gebruikersnaam"
-                                    v-model="username">
+                                    v-model="usernameCreate">
                             </div>
                         </div>
                         <div class="uk-margin">
@@ -63,7 +63,7 @@
                                     class="uk-input uk-form-width-large" 
                                     type="text" 
                                     placeholder="E-mailadres"
-                                    v-model="email">
+                                    v-model="emailCreate">
                             </div>
                         </div>
                         <div class="uk-margin">
@@ -114,29 +114,25 @@
     
     @Component
     export default class Login extends Vue {
-        private username = '';
-        private password = '';
-        private email = '';
-        private loading = false;
+
+        private usernameLogin = '';
+        private passwordLogin = '';
+
+        private usernameCreate = '';
+        private passwordCreate = '';
+        private emailCreate = '';
+
+
+        private loadingLogin = false;
         private loadingCreate = false;
         private status = true;
-
-        private create(): void {
-            LoginService.createUser(this.username, this.email, this.password).then(response => {
-                console.log(response);
-            });
-        }
-
-        private switchStatus(): void {
-            this.status = !this.status;
-        }
       
         private validate(): void {
-            this.loading = true;
+            this.loadingLogin = true;
             try {
-                LoginService.authenticateUser(this.username, this.password).then(response => {
+                LoginService.authenticateUser(this.usernameLogin, this.passwordLogin).then(response => {
                     if(response.status === 200){
-                        this.loading = false;
+                        this.loadingLogin = false;
                         
                         const user: User = {
                             id: response.data.id, 
@@ -152,7 +148,7 @@
                             }
                         });
                     } else {
-                        this.loading = false;
+                        this.loadingLogin = false;
                         UIkit.notification({message: "<span uk-icon='icon: trash'></span> Probleem met het inloggen", pos: 'top-left', status: 'danger'});
                     }
                 });
@@ -163,14 +159,14 @@
 
         public createAccount(): void {
             this.loadingCreate = true;
-            LoginService.createUser(this.username, this.email, this.password).then((response) => {
+            LoginService.createUser(this.usernameCreate, this.emailCreate, this.passwordCreate).then((response) => {
                 if(response.status === 200){
-                    this.loading = false;
+                    this.loadingCreate = false;
                     this.status = true;
                     UIkit.notification({message: "<span uk-icon='icon: comments'></span>Het maken van een account is gelukt", pos: 'top-left', status: 'success'});
                     this.loadingCreate = false;
                 } else {
-                    this.loading = false;
+                    this.loadingCreate = false;
                     UIkit.notification({message: "<span uk-icon='icon: trash'></span> Probleem met het aanmaken van een account", pos: 'top-left', status: 'danger'});
                     this.loadingCreate = false;
                 }
