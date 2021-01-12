@@ -1,31 +1,50 @@
-from serial_monitor import serial_monitor
 from current_time import current_time
-from database import database
+from sync import sync
+import time
 import os
 
-xdays = 1
-valid = 1
-userid = 1
-path = '/home/pi/Desktop/project/hardware/videos'
+class filecontrol:
+	current_time = current_time()
+	sync = sync()
 
-current_time = current_time()
-db = database()
-files = os.listdir(path)
+	def __init__(self):
+		global xdays
+		global valid
+		global userid
+		global path
+		global directories
 
-print("\nList all files older than " + str(xdays) + " days")
-print("===========================" + "=" * len(str(xdays)) + "====")
+		xdays = 1
+		valid = 1
+		userid = 1
+		path = '/home/pi/Desktop/project/hardware/data'
 
-for current_file in files:
-	if os.stat("videos/" + current_file).st_mtime < current_time - (xdays * 86400):
-		print(current_file)
-		db.connect()
-		col_headers = ['activities', 'timestamp', 'valid', 'userid']
-		col_values = [current_file, valid, userid]
+		directories = os.listdir(path)
 
-		db.delete(col_headers, col_values) 
 
-print("\nList all files newer than " + str(xdays) + " days")
-print("===========================" + "=" * len(str(xdays)) + "====")
-for current_file in files:
-	if os.stat("videos/" + current_file).st_mtime > current_time - (xdays * 86400):
-		print(current_file)
+	def file_check(self):
+
+		print("\nList all files older than " + str(xdays) + " days")
+		print("===========================" + "=" * len(str(xdays)) + "====")
+
+		for directory in directories:
+			files = os.listdir((path + "/" + directory))
+			for current_file in files:
+			# for current_file in path:
+			# 	print(current_file)	
+				if (os.stat(path + "/" + directory + "/" + current_file).st_mtime) < (self.current_time.get_now() - xdays * 86400):
+					print(current_file)
+					self.sync.file_remove_local(directory, current_file)
+					self.sync.file_remove_database(current_file)
+					self.sync.file_remove_remote(directory, current_file)
+
+
+
+			print("\nList all files newer than " + str(xdays) + " days")
+			print("===========================" + "=" * len(str(xdays)) + "====")
+			for current_file in files:
+				if (os.stat(path + "/" + directory + "/" + current_file).st_mtime) > (self.current_time.get_now() - xdays * 86400):
+					print(current_file)
+
+
+

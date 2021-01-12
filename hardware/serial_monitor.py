@@ -10,15 +10,17 @@ class serial_monitor():
     def __init__(self):
         serial_monitor.ser = serial.Serial('/dev/ttyUSB0', 9600)
 
-    def read(self):
-        b = serial_monitor.ser.readline()  # read a byte string
-        string_n = b.decode()   # decode byte string into Unicode  
-        string = string_n.rstrip() # remove \n and \r
-        values = string.split('/')
+    def read(self, active):
+        if active == True:
+            b = serial_monitor.ser.readline()  # read a byte string
+            string_n = b.decode()   # decode byte string into Unicode  
+            string = string_n.rstrip() # remove \n and \r
+            values = string.split('/')
 
-        serial_monitor.distance = values[0].replace('s', '')
-        serial_monitor.ldr = values[1].replace('x', '')
-        serial_monitor.valid = values[2].replace('v', '')
+            serial_monitor.distance = values[0].replace('s', '')
+            serial_monitor.ldr = values[1].replace('x', '')
+            serial_monitor.valid = values[2].replace('v', '')
+            print(values)
 
 
     
