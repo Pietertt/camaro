@@ -55,7 +55,7 @@ class CustomModel(keras.Model):
         self.model.summary()
 
     def prepare(self) -> None:
-        filenames = os.listdir("./data/train")
+        filenames = os.listdir("data/train/")
         categories=[]
         for f_name in filenames:
             category = f_name.split('.')[0]
@@ -86,13 +86,15 @@ class CustomModel(keras.Model):
         self.validation_generator = self.validation_datagen.flow_from_dataframe(self.validate_df, "./data/validation/",  x_col='filename', y_col='category', target_size = (self.image_width, self.image_height), class_mode = 'categorical', batch_size = self.batch_size)
     
     def train(self) -> None:
-        epochs=10
+        epochs=5
         history = self.model.fit_generator(
             self.train_generator, 
             epochs=epochs,
             validation_data=self.validation_generator,
-            validation_steps=self.total_validate//self.batch_size,
-            steps_per_epoch=self.total_train//self.batch_size,
+            validation_steps=800,
+            #self.total_validate//self.batch_size,
+            steps_per_epoch=10,
+            #self.total_train//self.batch_size,
             callbacks=self.callbacks
         )
 

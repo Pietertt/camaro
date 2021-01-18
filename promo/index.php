@@ -10,11 +10,11 @@
 </head>
 <body>
 <nav class="uk-navbar-container" uk-navbar>
-    <div class="uk-navbar-left">
+    <div class="uk-navbar-center">
         <ul class="uk-navbar-nav">
             <li class="uk-active"><a href="index.php">HOME</a></li>
-            <li class="uk-parent"><a href="products.php">PRODUCTS</a></li>
-            <li><a href="about.php">ABOUT US</a></li>
+            <li class="uk-active"><a href="products.php">PRODUCTS</a></li>
+            <li class="uk-active"><a href="about.php">ABOUT US</a></li>
         </ul>
     </div>
 </nav>

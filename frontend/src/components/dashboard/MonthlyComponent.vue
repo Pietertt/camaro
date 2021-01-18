@@ -26,14 +26,14 @@
         private labels: number[] = [];
         private data: number[] = [];
         private loaded = false;
+        private userid = '1';
 
         mounted(): void {
             setTimeout(this.validate, 150);
         }
 
-        validate(): void {
-          
-            axios.get('http://imac-van-pieter.local:5000/activities/monthly').then(response => {
+        validate(): void {          
+            axios.get('http://imac-van-pieter.local:5000/activities/monthly?userid=' + this.userid).then(response => {
                 for(let i = 0; i < response.data.length; i++){
                     this.data.push(response.data[i][0]);
                     this.labels.push(response.data[i][1]);
