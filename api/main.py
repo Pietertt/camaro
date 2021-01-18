@@ -61,7 +61,7 @@ def get_all_invalid_activities():
 
 @app.route("/activities/monthly")
 def get_activities_monthly():
-    userid = request.GET.get('userid')
+    userid = request.args.get('userid')
     cursor.execute("SELECT DATE(activities.timestamp), COUNT(activities.timestamp) AS TOT FROM activities WHERE userid=" + userid + " GROUP BY DATE(activities.timestamp)")
     result = cursor.fetchall()
 
