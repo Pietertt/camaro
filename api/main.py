@@ -105,7 +105,6 @@ def get_activities_percentage():
 
     return (json.dumps(data))
 
-
 @app.route("/sensor/delete/all")
 def delete_all_sensor():
     cursor.execute("DELETE FROM sensor_values")
