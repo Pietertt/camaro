@@ -13,7 +13,9 @@
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator'
     import axios from 'axios'
-
+    import { User } from '../../models/User';
+    import LoginService from '../../services/LoginService';
+    
     import Pie from '../charts/Pie.vue'
 
     @Component({
@@ -26,14 +28,16 @@
         
         private data: number[] = [];
         private loaded = false;
+        private user: User;
+        
 
         mounted(): void {
             setTimeout(this.validate, 500);
         }
 
         validate(): void {
-          
-            axios.get('http://imac-van-pieter.local:5000/activities/percentage').then(response => {
+            this.user = LoginService.getUserData();
+            axios.get('http://imac-van-pieter.local:5000/activities/percentage?userid=' + this.user.id).then(response => {
                 this.data.push(response.data[0]);
                 this.data.push(response.data[1]);
                 this.loaded = true;

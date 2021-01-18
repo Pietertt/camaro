@@ -15,6 +15,8 @@
     import axios from 'axios';
 
     import Doughnut from '../charts/Doughnut.vue'
+    import LoginService from '../../services/LoginService';
+    import { User } from '../../models/User';
 
     @Component({
         components: {
@@ -26,14 +28,17 @@
         private labels: number[] = [];
         private data: number[] = [];
         private loaded = false;
-        private userid = '1';
 
+        private userid = 2;
+        private user: User;
+    
         mounted(): void {
             setTimeout(this.validate, 150);
         }
 
-        validate(): void {          
-            axios.get('http://imac-van-pieter.local:5000/activities/monthly?userid=' + this.userid).then(response => {
+        validate(): void {    
+            this.user = LoginService.getUserData();
+            axios.get('http://imac-van-pieter.local:5000/activities/monthly?userid=' + this.user.id).then(response => {
                 for(let i = 0; i < response.data.length; i++){
                     this.data.push(response.data[i][0]);
                     this.labels.push(response.data[i][1]);
