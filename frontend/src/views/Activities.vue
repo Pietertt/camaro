@@ -55,7 +55,7 @@
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
     import axios from 'axios';
-    
+    import { User } from '../models/User';
     import MenuComponent from '@/components/dashboard/MenuComponent.vue';
     import LoginService from '../services/LoginService';
 
@@ -72,6 +72,7 @@
         private imagePath = '';
         private route = '';
         private loaded = false;
+        private user: User;
 
         mounted(): void {
             this.loadActivities();
@@ -101,9 +102,9 @@
             // alert(this.path);
         }
 
-
-        loadActivities(): void {
-            axios.get('http://imac-van-pieter.local:5000/activities/all').then(response => {
+        private loadActivities(): void {
+            this.user = LoginService.getUserData();
+            axios.get('http://imac-van-pieter.local:5000/activities/all?userid=' + this.user.id).then(response => {
                 this.recentData = response.data;
                 
             });

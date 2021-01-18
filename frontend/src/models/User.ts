@@ -1,6 +1,6 @@
-export interface User {
-    id: number;
-    username: string;
-    token: string;
-    email: string;
+export class User {
+    public id: number = 0;
+    public username: string = '';
+    public token: string = '';
+    public email: string = '';
 }

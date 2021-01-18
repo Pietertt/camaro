@@ -24,7 +24,8 @@ CORS(app)
 
 @app.route("/activities/recent")
 def helloWorld():
-    cursor.execute("SELECT * FROM `activities` WHERE valid = 1 ORDER BY id DESC LIMIT 5")
+    userid = request.args.get('userid')
+    cursor.execute("SELECT * FROM `activities` WHERE valid = 1 AND userid=" + userid + " ORDER BY id DESC LIMIT 5")
     result = cursor.fetchall()
 
     results = []
@@ -37,7 +38,8 @@ def helloWorld():
 
 @app.route("/activities/all")
 def get_all_activities():
-    cursor.execute("SELECT * FROM `activities` WHERE valid = 1 ORDER BY id DESC")
+    userid = request.args.get('userid')
+    cursor.execute("SELECT * FROM `activities` WHERE valid = 1 AND userid=" + userid + " ORDER BY id DESC")
     result = cursor.fetchall()
 
     return json.dumps(result)
@@ -91,20 +93,41 @@ def delete_all_activities():
 
 @app.route("/activities/percentage")
 def get_activities_percentage():
-    cursor.execute("SELECT COUNT(activities.valid) FROM activities GROUP BY activities.valid;")
-    result = cursor.fetchall()
+    userid = request.args.get('userid')
+    cursor.execute("SELECT COUNT(activities.valid) FROM activities WHERE userid = " + userid + " AND valid = 1")
+    valid = cursor.fetchall()
 
-    valid = result[0][0]
-    invalid = result[1][0]
+    cursor.execute("SELECT COUNT(activities.valid) FROM activities WHERE userid = " + userid + " AND valid = 0")
+    invalid = cursor.fetchall()
+    
+    if (str(valid[0])[1] == '0' and str(invalid[0])[1] == '0'):
+        data = []
+        data.append(0)
+        data.append(0)
+        return json.dumps(data)
+
+    if str(invalid[0])[1] == '0':
+        data = []
+        data.append(100)
+        data.append(0)
+        return json.dumps(data)
+
+    if str(valid[0])[1] == '0':
+        data = []
+        data.append(0)
+        data.append(100)
+        return json.dumps(data)
+
+    valid = valid[0][0]
+    invalid = invalid[0][0]
+
     total = valid + invalid
 
     data = []
     data.append(int((valid / total) * 100))
     data.append(int((invalid / total) * 100))
 
-
     return (json.dumps(data))
-
 
 @app.route("/sensor/delete/all")
 def delete_all_sensor():
