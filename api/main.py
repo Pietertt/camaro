@@ -39,7 +39,7 @@ def helloWorld():
 @app.route("/activities/all")
 def get_all_activities():
     userid = request.args.get('userid')
-    cursor.execute("SELECT * FROM `activities` WHERE valid = 1 AND userid=" + userid + " ORDER BY id DESC")
+    cursor.execute("SELECT * FROM `activities` WHERE valid = 1 AND userid=" + userid + " ORDER BY timestamp DESC")
     result = cursor.fetchall()
 
     return json.dumps(result)
@@ -65,7 +65,7 @@ def get_all_invalid_activities():
 @app.route("/activities/monthly")
 def get_activities_monthly():
     userid = request.args.get('userid')
-    cursor.execute("SELECT DATE(activities.timestamp), COUNT(activities.timestamp) AS TOT FROM activities WHERE userid=" + userid + " GROUP BY DATE(activities.timestamp)")
+    cursor.execute("SELECT DATE(activities.timestamp), COUNT(activities.timestamp) AS TOT FROM activities WHERE userid=" + userid + " GROUP BY DATE(activities.timestamp) ORDER BY DATE(activities.timestamp) ASC")
     result = cursor.fetchall()
 
     results = []
