@@ -1,12 +1,17 @@
 <template>
     <div class="uk-card uk-card-default uk-card-body">
         <h3 class="uk-card-title">Percentage</h3>
-        <Pie v-if="loaded"
-      :data="[data[0], data[1]]"
-      :labels="['Valid', 'Invalid']"
-      :colors="['#1E87F0', '#222222']"
-      :title="'Activiteiten'"
-    />
+        <template v-if="data.length > 0">
+            <Pie v-if="loaded"
+                :data="[data[0], data[1]]"
+                :labels="['Valid', 'Invalid']"
+                :colors="['#1E87F0', '#222222']"
+                :title="'Activiteiten'"
+                />
+        </template>
+        <template v-if="data.length == 0">
+            <div class="uk-placeholder uk-text-center">Geen percentage beschikbaar</div>
+        </template>
     </div>
 </template>
 

@@ -1,12 +1,16 @@
 <template>
     <div class="uk-card uk-card-default uk-card-body">
         <h3 class="uk-card-title">Deze maand</h3>
-        <Doughnut v-if="loaded"
-            :data="this.data"
-            :labels="this.labels"
-            :color="['#1E87F0']"
-            :title="'Activiteiten'"
-        />
+        <template v-if="data.length > 0">
+            <Doughnut v-if="loaded"
+                :data="this.data"
+                :labels="this.labels"
+                :color="['#1E87F0']"
+                :title="'Activiteiten'"
+            />
+            <template v-if="data.length == 0">
+                <div class="uk-placeholder uk-text-center">Geen percentage beschikbaar</div>
+            </template>
     </div>
 </template>
 
