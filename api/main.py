@@ -129,6 +129,7 @@ def get_activities_percentage():
 
     return (json.dumps(data))
 
+<<<<<<< HEAD
 @app.route("/sensor/value/recent")
 def get_values():
     userid = request.args.get('userid')
@@ -137,6 +138,14 @@ def get_values():
 
     return json.dumps(value) 
 
+=======
+@app.route("sensor/values")
+def get_sensor_values():
+    cursor.execute("SELECT distance, ldr FROM sensor_values")
+    sensor_values = cursor.fetchall()
+
+    print(sensor_values)
+>>>>>>> 171c18a5fb9aef04d2b9fa0e0620154d36f151a0
 
 @app.route("/sensor/delete/all")
 def delete_all_sensor():

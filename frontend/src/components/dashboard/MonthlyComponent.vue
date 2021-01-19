@@ -9,9 +9,9 @@
                 :title="'Activiteiten'"
             />
         </template>
-            <template v-if="data.length == 0">
-                <div class="uk-placeholder uk-text-center">Geen gegevens beschikbaar</div>
-            </template>
+        <template v-if="data.length == 0">
+            <div class="uk-placeholder uk-text-center">Geen gegevens beschikbaar</div>
+        </template>
     </div>
 </template>
 
