@@ -27,8 +27,12 @@
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
     import axios from 'axios';
+    import LoginService from '../services/LoginService';
+    import {User} from '../models/User';
+
     
     import MenuComponent from '@/components/dashboard/MenuComponent.vue';
+import Login from './Login.vue';
 
     @Component({
         components: {
@@ -40,6 +44,7 @@
         private videoSource = '';
         private recordedTime;
         private loaded = false;
+        private user: User;
 
         mounted(): void {
             this.loadActivities();
@@ -48,8 +53,9 @@
 
 
         loadActivities(): void {
+            this.user = LoginService.getUserData();
             console.log('load activities function');
-            axios.get('http://imac-van-pieter.local:5000/activities/all').then(response => {
+            axios.get('http://imac-van-pieter.local:5000/activities/all?userid=' + this.user.id).then(response => {
                 this.recentData = response.data;
             });
         }
@@ -58,9 +64,10 @@
             setTimeout(() => {
                 for (const id of this.recentData){
                     if (id[0] == currentId){
-                        this.videoSource = 'videos/' + String(id[1]) + '.mp4';
+                        this.videoSource = 'data/videos/' + String(id[1]) + '.mp4';
                         this.filterDate(String(id[1]));
                         this.loaded = true;
+                        console.log(id);
                     }
                 }
             }, 500);

@@ -90,15 +90,15 @@
         private init(): void {
             setTimeout(() => {
                 this.image = String(this.recentData[0][1]) + '.jpg';
-                this.imagePath = '/images/' + this.image;
+                this.imagePath = 'data/images/' + this.image;
                 this.initId = String(this.recentData[0][0]);
-                this.route = '/activity/' + this.initId;
+                this.route = 'data/activity/data/' + this.initId;
             }, 500);
         }
         
         private setFootage(datum: string){
             this.image = String(datum);
-            this.imagePath = '/images/' + String(datum) + '.jpg';
+            this.imagePath = 'data/images/' + String(datum) + '.jpg';
             // alert(this.path);
         }
 
