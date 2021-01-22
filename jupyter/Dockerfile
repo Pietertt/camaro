@@ -1,4 +1,4 @@
-FROM jupyter/datascience-notebook:9b06df75e445
+FROM tensorflow/tensorflow:nightly-py3-jupyter
 
 COPY requirements.txt requirements.txt
 

@@ -1,9 +1,7 @@
-keras
-tensorflow
 flask
 flask_cors
 pillow
-numpy==1.19.5
+numpy
 pandas
 matplotlib
 sklearn
