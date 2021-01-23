@@ -74,21 +74,13 @@ services:
   
   keras:
     container_name: keras
-    image: pietertt/keras:1.0
-    command: "tail -f /dev/null"
-    ports:
-      - "7000:5000"
-    volumes: 
-      - ./keras:/app
-
-  jupyter:
-    container_name: jupyter
     image: pietertt/jupyter:1.3
-    volumes:
-      - ./keras:/tf/tensorflow-tutorials
     ports:
       - "8888:8888"
       - "6006:6006"
+    volumes: 
+      - ./keras:/tf
+      - ./keras/jupyter_notebook_config.py:/root/.jupyter/jupyter_notebook_config.py
 
 networks: 
   default:
