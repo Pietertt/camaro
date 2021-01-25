@@ -13,7 +13,7 @@ model = CustomModel()
 #model.summary()
 #model.prepare()
 #model.train()
-model.predict()
+model.predict('humans/validation/no/dog.60.jpg')
 
 # model.define_model()
 # model.train()

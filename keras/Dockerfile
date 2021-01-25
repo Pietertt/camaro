@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:nightly-py3-jupyter
+FROM tensorflow/tensorflow:nightly-jupyter
 
 COPY requirements.txt requirements.txt
 
