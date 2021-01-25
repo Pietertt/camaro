@@ -74,7 +74,7 @@ services:
   
   keras:
     container_name: keras
-    image: pietertt/jupyter:1.3
+    image: pietertt/jupyter:1.4
     ports:
       - "8888:8888"
       - "6006:6006"
