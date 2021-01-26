@@ -1,6 +1,12 @@
 import mysql.connector
 import json
 import datetime
+import numpy
+import tensorflow
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.applications.vgg16 import preprocess_input
+from PIL import Image
+import os
 
 from models.Activity import Activity
 
@@ -144,3 +150,16 @@ def delete_all_sensor():
     database.commit()
 
     return str(200)
+
+@app.route("/image/validate")
+def validate_image():
+    model = tensorflow.keras.models.load_model("humansnfaces")
+
+    img = image.load_img('images/' + str(request.args.get('image')), target_size=(128, 128))
+    x = image.img_to_array(img)
+    x = numpy.expand_dims(x, axis=0)
+    x = preprocess_input(x)
+
+    predict = model.predict(x)
+
+    return str(round(predict[0][0], 2))
