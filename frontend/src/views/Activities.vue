@@ -72,7 +72,7 @@
         private imagePath = '';
         private route = '';
         private loaded = false;
-        private user: User;
+        private user: User = new User();
 
         mounted(): void {
             this.loadActivities();

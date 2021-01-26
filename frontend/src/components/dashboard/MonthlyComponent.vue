@@ -35,7 +35,7 @@
         private loaded = false;
 
         private userid = 2;
-        private user: User;
+        private user: User = new User();
     
         mounted(): void {
             setTimeout(this.validate, 150);

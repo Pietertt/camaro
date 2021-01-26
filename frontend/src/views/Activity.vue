@@ -29,10 +29,7 @@
     import axios from 'axios';
     import LoginService from '../services/LoginService';
     import {User} from '../models/User';
-
-    
     import MenuComponent from '@/components/dashboard/MenuComponent.vue';
-import Login from './Login.vue';
 
     @Component({
         components: {
@@ -44,7 +41,7 @@ import Login from './Login.vue';
         private videoSource = '';
         private recordedTime;
         private loaded = false;
-        private user: User;
+        private user: User = new User();
 
         mounted(): void {
             this.loadActivities();

@@ -33,7 +33,7 @@
         
         private data: number[] = [];
         private loaded = false;
-        private user: User;
+        private user: User = new User();
         
 
         mounted(): void {

@@ -41,7 +41,7 @@
     export default class ActivitiesComponent extends Vue {
         
         private chartData = [];
-        private user: User;
+        private user: User = new User();
 
         mounted(): void {
             setTimeout(this.validate, 250)
