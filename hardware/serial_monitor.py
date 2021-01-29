@@ -12,6 +12,7 @@ class serial_monitor():
 
     def read(self, active):
         if active == True:
+            serial_monitor.valid = 0
             b = serial_monitor.ser.readline()  # read a byte string
             string_n = b.decode()   # decode byte string into Unicode  
             string = string_n.rstrip() # remove \n and \r

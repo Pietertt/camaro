@@ -1,12 +1,16 @@
 import mysql.connector
 import json
 import datetime
+<<<<<<< Updated upstream
 import numpy
 import tensorflow
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.vgg16 import preprocess_input
 from PIL import Image
 import os
+=======
+import tensorflow
+>>>>>>> Stashed changes
 
 from models.Activity import Activity
 
@@ -153,13 +157,24 @@ def delete_all_sensor():
 
 @app.route("/image/validate")
 def validate_image():
+<<<<<<< Updated upstream
     model = tensorflow.keras.models.load_model("humansnfaces")
 
     img = image.load_img('images/' + str(request.args.get('image')), target_size=(128, 128))
+=======
+    image = request.args.get('image')
+    model = tensorflow.keras.models.load_model("humansnfaces")
+
+    img = image.load_img(image, target_size=(128, 128))
+>>>>>>> Stashed changes
     x = image.img_to_array(img)
     x = numpy.expand_dims(x, axis=0)
     x = preprocess_input(x)
 
     predict = model.predict(x)
 
+<<<<<<< Updated upstream
     return str(round(predict[0][0], 2))
+=======
+    return round(predict[0][0], 2)
+>>>>>>> Stashed changes

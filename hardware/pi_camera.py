@@ -9,6 +9,7 @@ class pi_camera:
   def __init__(self):
     global camera 
     global filecontrol
+    global valid
 
     camera = picamera.PiCamera()
     filecontrol = filecontrol()
@@ -19,11 +20,23 @@ class pi_camera:
     camera.hflip = True
 
   def take_photo(self):
+    valid = 0
     pi_camera.name = str(current_time().get_time())
-    camera.capture(pi_camera.name + ".jpg")   
+    camera.capture(pi_camera.name + ".jpg")
     os.system("sudo mv " + pi_camera.name + ".jpg data/images")
-    os.system('scp /home/pi/Desktop/project/hardware/data/images/' + pi_camera.name + '.jpg pieterboersma@imac-van-pieter:/Users/pieterboersma/Desktop/camaro/frontend/public/data/images')
-    time.sleep(1)
+    time.sleep(2)
+    
+    os.system('scp /home/pi/Desktop/project/hardware/data/images/' + pi_camera.name + '.jpg pieterboersma@imac-van-pieter:/Users/pieterboersma/Desktop/camaro/api/images')
+    valid = os.system('curl imac-van-pieter:5000/image/validate?image=' + pi_camera.name + '.jpg')
+    if valid > 0.5:
+      os.system('scp /home/pi/Desktop/project/hardware/data/images/' + pi_camera.name + '.jpg pieterboersma@imac-van-pieter:/Users/pieterboersma/Desktop/camaro/frontend/public/data/images')
+      time.sleep(1)
+      os.system('rm pieterboersma@imac-van-pieter:/Users/pieterboersma/Desktop/camaro/api/images/' + pi_camera.name + '.jpg')
+    elif valid < 0.5:
+      os.system("sudo rm data/" + pi_camera.name + ".jpg")
+      
+
+    return valid
 
   def take_video(self, recording_time):
 

@@ -45,6 +45,7 @@ class filecontrol:
 			for current_file in files:
 				if (os.stat(path + "/" + directory + "/" + current_file).st_mtime) > (self.current_time.get_now() - xdays * 86400):
 					print(current_file)
+		
 
 
 
