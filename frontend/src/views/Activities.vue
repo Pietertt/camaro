@@ -24,7 +24,7 @@
                                     </thead>
                                     <tbody>
                                         <!-- <tr v-for="d in recentData" :key="d.timestamp" v-on:click="navigate(d[0])"> -->
-                                        <tr v-for="d in recentData" :key="d.timestamp" v-on:click="setId(d[0]); setFootage(d[1])">
+                                        <tr v-for="d in recentData" :key="d.timestamp" style="cursor: pointer" v-on:click="setId(d[0]); setFootage(d[1])">
                                             <td>{{ d[0] }}</td>
                                             <td>{{ d[1] }}</td>
                                             <td>{{ d[2] }}</td>
