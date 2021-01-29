@@ -9,13 +9,11 @@ class filecontrol:
 
 	def __init__(self):
 		global xdays
-		global valid
 		global userid
 		global path
 		global directories
 
 		xdays = 1
-		valid = 1
 		userid = 1
 		path = '/home/pi/Desktop/project/hardware/data'
 

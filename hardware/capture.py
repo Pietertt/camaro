@@ -20,6 +20,3 @@ col_headers = ['activities', 'timestamp', 'valid', 'userid']
 col_values = [timestamp, str(valid), userid]
 
 db.insert(col_headers, col_values)
-
-valid = 0
-
