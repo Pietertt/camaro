@@ -88,7 +88,8 @@
                     </fieldset>
                 </form>
             </div>
-        </div>      
+        </div>   
+        <span style="position: absolute; bottom: 10px; left: 10px; color: white">&copy; Pieter Boersma en Jan Minne Holwerda</span>   
     </div>
 </template>
 
