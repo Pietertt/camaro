@@ -1,8 +1,6 @@
-import flask
-from flask import request
-import os
+import requests
+import json
 
-name = 'pp'
-#os.system('scp /home/pi/Desktop/project/hardware/data/images/' + name + '.png pieterboersma@imac-van-pieter:/Users/pieterboersma/Desktop/camaro/api/images')
-x = os.system('curl imac-van-pieter:5000/image/validate?image=' + name + '.png')
-print(x)
+print(json.loads(requests.get('http://imac-van-pieter:5000/image/validate?image=testimage.jpg').text))
+
+#print(subprocess.check_output(["curl http://google.com/"]))
