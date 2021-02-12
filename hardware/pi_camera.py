@@ -1,3 +1,4 @@
+
 from current_time import current_time
 from filecontrol import filecontrol
 import requests
@@ -27,26 +28,27 @@ class pi_camera:
     pi_camera.name = str(current_time().get_time())
     camera.capture(pi_camera.name + ".jpg")
     os.system("sudo mv " + pi_camera.name + ".jpg data/images")
-    time.sleep(2)
+    time.sleep(1)
     
     os.system('scp /home/pi/Desktop/project/hardware/data/images/' + pi_camera.name + '.jpg pieterboersma@imac-van-pieter:/Users/pieterboersma/Desktop/camaro/api/images')
-    valid = json.loads(requests.get('http://imac-van-pieter:5000/image/validate?image=' + pi_camera.name + '.jpg').text)
-    #valid = json.loads(requests.get('http://imac-van-pieter:5000/image/validate?image=' + "testimage" + '.jpg').text)
+    time.sleep(2)
+    #valid = json.loads(requests.get('http://imac-van-pieter:5000/image/validate?image=' + pi_camera.name + '.jpg').text)
+    valid = json.loads(requests.get('http://imac-van-pieter:5000/image/validate?image=' + "testimage" + '.jpg').text)
     print('Value of valid is: ')
     print(valid)
 
     if valid > 0.5:
       os.system('scp /home/pi/Desktop/project/hardware/data/images/' + pi_camera.name + '.jpg pieterboersma@imac-van-pieter:/Users/pieterboersma/Desktop/camaro/frontend/public/data/images')
       time.sleep(1)
-      os.system('rm pieterboersma@imac-van-pieter:/Users/pieterboersma/Desktop/camaro/api/images/' + pi_camera.name + '.jpg')
     elif valid < 0.5:
       os.system("sudo rm data/images/" + pi_camera.name + ".jpg")
-      
 
+    os.system('ssh pieterboersma@imac-van-pieter rm /Users/pieterboersma/Desktop/camaro/api/images/' + pi_camera.name + '.jpg')
+      
     return valid
 
   def take_video(self, recording_time):
-
+    camera.resolution = (1920, 1080)
     self.recording_time = recording_time
     
     camera.start_preview()
